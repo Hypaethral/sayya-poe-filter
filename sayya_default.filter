@@ -1,15 +1,8 @@
-# Sayya's item filter, v. 1.6 (3/2/2016)
+# Script edited with Filtration - https://github.com/ben-wallis/Filtration
+# Sayya's item filter, v. 1.24 (7/13/2015)
 # 
 # Changelog:
 # 
-# Added support for Perandus (3/2/2016)
-# Added support for Talisman (12/9/2015)
-# Defaulted Warbands to hiding with borders on alt; added sound to map drops; added Detonate Mines to special gems (11/9/2015)
-# Adjusted currency tiers, tweaked regal recipe (8/8/2015)
-# Added handling for chaos Warbands weapons (show magic weapons of ilvl 70+) (8/1/2015)
-# Adjusted PlayAlertSound volumes (8/1/2015)
-# Fixed 4L handling (7/27/2015)
-# Adjusted Warbands filter, added block for 4Ls, adjusted aura handling, added alert sounds to midtier currency, adjusted some font sizes (7/25/2015)
 # Added Portal, now shows all magic items (shrunk) by default for Warbands (7/13/2015)
 # Font size changes, small refinement to recipe highlighting, added support for Filtration themes (7/2/2015)
 # Minor color changes (6/26/2015)
@@ -27,10 +20,10 @@
 
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Alchemy" "Scouring" "Perandus Coin"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb"  "Alchemy" "Scouring"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
-	PlayAlertSound 3 300
+	PlayAlertSound 3 100
 
 # Add a unique border and sound to high-end currency (AlertSound5)
 Show # Currency - High
@@ -45,12 +38,22 @@ Show # Currency - Low
 
 # Section: Maps, Uniques, Quest Items
 
-# Adjust font size of: uniques, maps (includes sacrifice fragments), quest items
 Show # Maps/Fragments
     Class "Map"
-	PlayAlertSound 6 300
-    SetFontSize 38
+		BaseType "Overgrown Shrine"
+		SetFontSize 38
 
+# Adjust font size of: uniques, maps (includes sacrifice fragments), quest items
+Show #Maps I care about
+	Class "Map"
+		BaseType "Abyss" "Colosseum" "Core" "Shrine Map" "Conservatory" "Palace" "Courtyard" "Excavation" "Wasteland" "Waterways" "Arsenal" "Overgrown Ruin" "Shipyard" "Village Ruin" "Academy" "Crematorium" "Precinct" "Springs" "Bazaar" "Necropolis" "Plateau" "Volcano" "Arid Lake" "Gorge" "Residence" "Underground River" "Malformation" "Canyon" "Cells" "Dark Forest" "Dry Peninsula" "Orchard"
+		PlayAlertSound 1 300
+		SetFontSize 42
+		
+Show # Maps/Fragments
+    Class "Map"
+    SetFontSize 38		
+	
 Show # Quest Items
     Class "Quest"
     SetFontSize 38
@@ -64,10 +67,17 @@ Show # Valuables - Uniques
 # Add a border to flasks that are near the current level or have 15%+ quality
 Show # Flasks - Utility
     Class "Utility Flask"
+	BaseType "Granite Flask" "Ruby Flask" "Topaz Flask" "Jade Flask" "Quicksilver Flask" "Quartz Flask" "Diamond Flask"
     SetBorderColor 88 0 179 # Utility/Hybrid/Quality flask
 
+Show # Flasks - non-white sapphire and amyth flasks
+    Class "Utility Flask"
+	BaseType "Sapphire Flask" "Amethyst Flask"
+	Rarity = Magic
+    SetBorderColor 88 0 179 # Utility/Hybrid/Quality flask
+	
 Show # Flasks - Quality
-    Quality >= 10
+    Quality >= 5
     Class "Flask"
     SetBorderColor 88 0 179 # Utility/Hybrid/Quality flask
 
@@ -153,30 +163,31 @@ Show # Flasks - Life - Divine+ - (under 70)
 
 Show # Flasks - Mana - Divine+ - (over 70)
     DropLevel > 58
+	ItemLevel <= 75
     Class "Mana Flask"
     SetFontSize 25
 
 Show # Flasks - Life - Divine+ - (over 70)
     DropLevel > 58
+	ItemLevel <= 75
     Class "Life Flask"
     SetFontSize 25
 
 # Section: Special Items
 
-# Add border and sound to special items: fishing rods, jewels, div cards, talismans
-Show # Valuables - Talismans
-    Class "Amulet"
-	BaseType "Talisman"
-	SetBorderColor 161 245 185 # Talisman
-	SetFontSize 42
-	PlayAlertSound 1 300
-
+# Add a red border and sound to special items: fishing rods, jewels (AlertSound7)
 Show # Valuables - Fishing Rods, Jewels, Div Cards
     Class "Fishing Rod" "Jewel" "Divination Card"
     SetBorderColor 150 0 0 # Special drops
     SetFontSize 42
-    PlayAlertSound 7 300
+    PlayAlertSound 7 100
 
+Show # Valuables Talismans
+    Class "Amulet"
+		BaseType "Talisman"
+		SetBorderColor 150 0 0 # Special drops
+		SetFontSize 42
+	
 # Section: Links and Sockets
 
 # Add a grey border and sound to 6s/5l/6l items (AlertSound2)
@@ -200,14 +211,12 @@ Show # Valuables - RGB Items
     SocketGroup "RGB"
     SetTextColor 255 255 255 # RGB whites
     SetBackgroundColor 0 0 0 255 # Contrast background
-    SetFontSize 38
 
 Show # Valuables - RGB Items
     Rarity = Magic
     SocketGroup "RGB"
     SetTextColor 125 175 255 # RGB blues
     SetBackgroundColor 0 0 0 255 # Contrast background
-    SetFontSize 38
 
 # Section: Regal Recipe
 
@@ -267,10 +276,11 @@ Show # Gems - Quality
     Class "Gem"
     SetBorderColor 54 100 146 # Valuable/quality gems
     SetFontSize 38
+	PlayAlertSound 1 200
 
 Show # Gems - Valuable
     Class "Gem"
-    BaseType "Empower" "Enhance" "Enlighten" "Portal" "Detonate Mines"
+    BaseType "Empower" "Enhance" "Enlighten" "Portal"
     SetBorderColor 54 100 146 # Valuable/quality gems
     SetFontSize 38
 
@@ -282,14 +292,9 @@ Show # Gems - Vaal
 
 Show # Gems - Support
     Class "Support"
-    SetFontSize 35
+    SetFontSize 25
 
-Show # Gems - Active - Aura/Buff
-    Class "Active"
-    BaseType "Wrath" "Anger" "Hatred" "Clarity" "Determination" "Grace" "Discipline" "Vitality" "Haste" "Purity of" "Herald of" "Arctic Armour" 
-    SetFontSize 35
-	
-Show # Gems - Active - Other
+Show # Gems - Active
     Class "Active"
     SetFontSize 25
 
@@ -298,17 +303,23 @@ Show # Gems - Active - Other
 # Add a dark green border to normal items of desired chance bases
 Show # Bases - Chance
     Rarity = Normal
-    BaseType "Occultist's" "Judgement Staff" "Agate Amulet" "Imperial Bow"
+    BaseType "Judgement Staff" "Sorcerer Boots" "Sapphire Flask"
     SetBorderColor 0 73 0 # Chance bases
 
 # Add a teal border to ilvl 77+ items of desired bases
-Show # Bases - 77+ crafting
+Show # Bases - 77+ jewelry
     ItemLevel >= 77
     Rarity = Normal
-    BaseType "Gold"
     Class "Amulets" "Rings"
     SetBorderColor 54 100 146 # Crafting white bases
 
+Show # Bases - 77+ crafting (specific/conditional)
+    ItemLevel >= 77
+    Rarity = Normal
+    BaseType "Vaal Regalia" "Glorious Plate" "Harbinger Bow" "Maraketh Bow" "Leather Belt" "Rustic Sash"
+	SetFontSize 25
+    SetBorderColor 54 100 146 # Crafting white bases
+	
 # Section: Rares
 
 # Show all rares not covered above (safeguard)
@@ -318,17 +329,12 @@ Show # Rares - Other
 # Section: Other Items (accessories, chisel hammers, Maraketh weapons, Sacrificial Garb)
 
 # Always show Maraketh weapons (capped by level), accessories (reduced size), hammers (white or magic 12%), and sacrificial garbs
-Show # Jewelry
-    Rarity <= Magic
-    Class "Amulet" "Ring" "Belt"
-    SetFontSize 25
-
 Show # Chisel Hammers
     Rarity = Normal
     BaseType "Stone Hammer" "Rock Breaker" "Gavel"
 
 Show # Chisel Hammers
-    Quality >= 12
+    Quality >= 16
     Rarity = Magic
     BaseType "Stone Hammer" "Rock Breaker" "Gavel"
 
@@ -347,36 +353,22 @@ Show # Maraketh Weapons - Cruel
 
 Show # Maraketh Weapons - Merciless
     BaseType "Maraketh Bow" "Eclipse Staff" "Exquisite Blade" "Coronal Maul" "Fleshripper" "Dragoon Sword" "Sambar Sceptre" "Runic Hatchet" "Tiger Hook" "Behemoth Mace" "Profane Wand" "Gemini Claw"
-    SetFontSize 25
+    Rarity = Normal
+	SetFontSize 25
 
-Show # Maraketh Weapons - Merciless
+Show # Maraketh Weapons - Merciless required to prevent strange bug with showing other white items??
     Class "Daggers"
     BaseType "Sai"
     SetFontSize 25
 
-
-	
 #Highlight 4L items below level 50
 Show # Valuables - 4L
     LinkedSockets = 4
-	ItemLevel < 50
+        ItemLevel < 50
     SetBackgroundColor 0 0 0 255 # Contrast background
 	
 # Section: Cleanup (hiding)
 
-#Show Warbands bases with borders on alt
-Hide # Warbands - All Magic Boots/Gloves/Helms
-    Rarity = Magic
-	Class Boots Gloves Helmets
-    SetFontSize 34
-	SetBorderColor 54 100 146
-
-Hide # Warbands - Magic Weapons
-	Rarity = Magic
-	ItemLevel >= 70
-	Class Claws Daggers Wands Swords Axes Maces Bows Staves Sceptres
-	SetFontSize 34
-	SetBorderColor 54 100 146
 # Hide white and magic items with a substantial gap between drop and item level (REMOVE FROM HERE UNTIL NEXT COMMENT if you want nothing hidden)
 Hide # Trash - Low Base
     ItemLevel >= 20
