@@ -1,8 +1,16 @@
-# Script edited with Filtration - https://github.com/ben-wallis/Filtration
-# Sayya's item filter, v. 1.24 (7/13/2015)
+# Sayya's item filter, v. 1.7 (3/11/2016)
 # 
 # Changelog:
 # 
+# Added Labyrinth keys (3/11/2016)
+# Added support for Perandus (3/2/2016)
+# Added support for Talisman (12/9/2015)
+# Defaulted Warbands to hiding with borders on alt; added sound to map drops; added Detonate Mines to special gems (11/9/2015)
+# Adjusted currency tiers, tweaked regal recipe (8/8/2015)
+# Added handling for chaos Warbands weapons (show magic weapons of ilvl 70+) (8/1/2015)
+# Adjusted PlayAlertSound volumes (8/1/2015)
+# Fixed 4L handling (7/27/2015)
+# Adjusted Warbands filter, added block for 4Ls, adjusted aura handling, added alert sounds to midtier currency, adjusted some font sizes (7/25/2015)
 # Added Portal, now shows all magic items (shrunk) by default for Warbands (7/13/2015)
 # Font size changes, small refinement to recipe highlighting, added support for Filtration themes (7/2/2015)
 # Minor color changes (6/26/2015)
@@ -46,7 +54,7 @@ Show # Maps/Fragments
 # Adjust font size of: uniques, maps (includes sacrifice fragments), quest items
 Show #Maps I care about
 	Class "Map"
-		BaseType "Abyss" "Colosseum" "Core" "Shrine Map" "Conservatory" "Palace" "Courtyard" "Excavation" "Wasteland" "Waterways" "Arsenal" "Overgrown Ruin" "Shipyard" "Village Ruin" "Academy" "Crematorium" "Precinct" "Springs" "Bazaar" "Necropolis" "Plateau" "Volcano" "Arid Lake" "Gorge" "Residence" "Underground River" "Malformation" "Canyon" "Cells" "Dark Forest" "Dry Peninsula" "Orchard"
+		BaseType "Abyss" "Colosseum" "Core" "Shrine Map" "Conservatory" "Palace" "Courtyard" "Excavation" "Wasteland" "Waterways" "Arsenal" "Overgrown Ruin" "Shipyard" "Village Ruin" "Academy" "Crematorium" "Precinct" "Springs" "Bazaar" "Necropolis" "Plateau" "Chateau" "Volcano" "Arid Lake" "Gorge" "Residence" "Underground River" "Malformation" "Canyon" "Cells" "Dark Forest" "Dry Peninsula" "Orchard"
 		PlayAlertSound 1 300
 		SetFontSize 42
 		
@@ -67,7 +75,7 @@ Show # Valuables - Uniques
 # Add a border to flasks that are near the current level or have 15%+ quality
 Show # Flasks - Utility
     Class "Utility Flask"
-	BaseType "Granite Flask" "Ruby Flask" "Topaz Flask" "Jade Flask" "Quicksilver Flask" "Quartz Flask" "Diamond Flask"
+	BaseType "Granite Flask" "Ruby Flask" "Topaz Flask" "Jade Flask" "Quicksilver Flask" "Quartz Flask" "Diamond Flask" "Basalt Flask" "Aquamarine Flask" "Stibnite Flask" "Sulphur Flask" "Silver Flask" "Bismuth Flask"
     SetBorderColor 88 0 179 # Utility/Hybrid/Quality flask
 
 Show # Flasks - non-white sapphire and amyth flasks
