@@ -79,6 +79,7 @@ Show # Labyrinth Treasure Items
 Show # Valuables - Uniques
     Rarity = Unique
     SetFontSize 42
+    PlayAlertSound 8 200
 
 # Section: Flasks
 
