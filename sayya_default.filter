@@ -327,17 +327,28 @@ Show # Bases - Chance
 
 # Add a teal border to ilvl 77+ items of desired bases
 Show # Bases - 77+ jewelry
-    ItemLevel >= 77
+    ItemLevel >= 75
     Rarity = Normal
-    Class "Amulets" "Rings"
-    SetBorderColor 54 100 146 # Crafting white bases
+    Class "Amulets" "Rings" "Belts"
+    SetBorderColor 54 100 146 # Crafting bases
 
-Show # Bases - 77+ crafting (specific/conditional)
-    ItemLevel >= 77
-    Rarity = Normal
-    BaseType "Vaal Regalia" "Glorious Plate" "Harbinger Bow" "Maraketh Bow" "Leather Belt" "Rustic Sash"
-    SetFontSize 25
-    SetBorderColor 54 100 146 # Crafting white bases
+Show # Bases - 83+ crafting weapons (phys), same teal border but bigger text
+    ItemLevel >= 83
+    BaseType "Maraketh Bow" "Harbinger Bow" "Imbued Wand" "Eternal Sword" "Exquisite Blade"
+    SetFontSize 38
+    SetBorderColor 54 100 146 # Crafting bases
+
+Show # Bases - 84+ crafting armor (life, es, resists), same teal border but bigger text
+    ItemLevel >= 84
+    BaseType "Eternal Burgonet" "Vaal Regalia" "Lion Pelt" "Hubris Circlet" "Glorious Plate" "Titanium Spirit Shield" "Harmonic Spirit Shield"  "Imperial Buckler" "Supreme Spiked Shield"
+    SetFontSize 38
+    SetBorderColor 54 100 146 # Crafting bases
+
+Show # Bases - 84+ crafting amulets (spell dmg), same teal border but bigger text 
+    ItemLevel >= 84
+    Class "Amulets"
+    SetFontSize 38
+    SetBorderColor 54 100 146 # Crafting bases
     
 # Section: Rares
 
