@@ -62,11 +62,11 @@ Show #Maps I care about
     DropLevel > 76
     PlayAlertSound 1 300
     SetFontSize 42
-        
+
 Show # Maps/Fragments
     Class "Map"
-    SetFontSize 38      
-    
+    SetFontSize 38
+
 Show # Quest Items
     Class "Quest"
     SetFontSize 38
@@ -99,7 +99,7 @@ Show # Flasks - non-white sapphire and amyth flasks
     BaseType "Sapphire Flask" "Amethyst Flask"
     Rarity = Magic
     SetBorderColor 88 0 179 # Utility/Hybrid/Quality flask
-    
+
 Show # Flasks - Quality
     Quality >= 10
     Class "Flask"
@@ -211,7 +211,7 @@ Show # Valuables Talismans
         BaseType "Talisman"
         SetBorderColor 150 0 0 # Special drops
         SetFontSize 38
-    
+
 # Section: Links and Sockets
 
 # Add a grey border and sound to 6s/5l/6l items (AlertSound2)
@@ -353,7 +353,7 @@ Show # Bases - Chance
     Rarity = Normal
     BaseType "Judgement Staff" "Sorcerer Boots" "Sapphire Flask" "Agate Amulet"
     SetBorderColor 0 73 0 # Chance bases
-    
+
 # Section: Rares
 
 # Show all rares not covered above (safeguard)
