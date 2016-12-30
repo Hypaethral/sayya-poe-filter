@@ -1,7 +1,8 @@
-# Sayya's item filter, v. 1.8 (3/12/2016)
+# Sayya's Ty Edition item filter, v. 1.8 (3/12/2016)
 # 
 # Changelog:
 #
+# Removed shit at random to prepare for breach :D (12/3/2016)
 # Added support for Prophecy (6/3/2016)
 # Added support for Labyrinth (3/12/2016)
 # Added support for Perandus (3/2/2016)
@@ -29,7 +30,7 @@
 
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Alchemy" "Scouring" "Perandus Coin" "Silver Coin" "Prophecy"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Alchemy" "Scouring" "Perandus Coin" "Silver Coin"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
@@ -55,7 +56,7 @@ Show # Maps/Fragments
 # Adjust font size of: uniques, maps (includes sacrifice fragments), quest items, and 
 Show #Maps I care about
     Class "Map"
-        BaseType "Abyss" "Colosseum" "Core" "Shrine Map" "Conservatory" "Palace" "Courtyard" "Excavation" "Wasteland" "Waterways" "Arsenal" "Overgrown Ruin" "Shipyard" "Village Ruin" "Academy" "Crematorium" "Precinct" "Springs" "Bazaar" "Necropolis" "Plateau" "Chateau" "Volcano" "Arid Lake" "Gorge" "Residence" "Underground River" "Malformation" "Canyon" "Cells" "Dark Forest" "Dry Peninsula" "Orchard"
+        BaseType "Abyss" "Colosseum" "Core" "Shrine Map" "Palace" "Courtyard" "Excavation" "Wasteland" "Waterways" "Arsenal" "Overgrown Ruin" "Shipyard" "Academy" "Crematorium" "Precinct" "Springs" "Bazaar" "Necropolis" "Plateau" "Chateau" "Volcano" "Arid Lake" "Gorge" "Residence" "Underground River" "Malformation" "Canyon" "Cells" "Dark Forest" "Orchard"
         PlayAlertSound 1 300
         SetFontSize 42
         
@@ -68,7 +69,7 @@ Show # Quest Items
     SetFontSize 38
 
 Show # Labyrinth Boss Encounter Items
-    BaseType "Sand of Eternity" "Orb of Elemental Essence" "Rod of Detonation" "Cube Of Absorption" "Bane of the Loyal" "Heart of the Gargoyle" "Cogs of Disruption" "Portal Shredder"
+    BaseType "Sand of Eternity" "Rod of Detonation" "Cube Of Absorption" "Bane of the Loyal" "Heart of the Gargoyle" "Cogs of Disruption" "Portal Shredder"
     SetFontSize 38
 
 Show # Labyrinth Treasure Items
