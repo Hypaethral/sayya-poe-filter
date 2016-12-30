@@ -1,7 +1,8 @@
-# Sayya's Ty Edition item filter, v. 1.8 (3/12/2016)
+# Sayya's Ty Edition item filter, v. 3.0 (12/29/2016)
 # 
 # Changelog:
 #
+# Refined shit at random now that breach has been going on for a while; fixed mapstuff; added atlas stuff (12/29/2016)
 # Removed shit at random to prepare for breach :D (12/3/2016)
 # Added support for Prophecy (6/3/2016)
 # Added support for Labyrinth (3/12/2016)
@@ -28,9 +29,16 @@
 
 # Section: Currency
 
+# Add a currency-colored border to shitkid currency
+Show # Currency - Shit you wanna pick up but you don't wanna make a fuss about it
+    BaseType "Splinter of"
+    SetBorderColor 170 158 130 # Uncommon currency
+    SetFontSize 30
+    PlayAlertSound 3 50
+
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Alchemy" "Scouring" "Perandus Coin" "Silver Coin"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Alchemy" "Scouring" "Perandus Coin" "Silver Coin" "Prophecy" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Unshaping Orb" "Blessing of" "Essence of"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
@@ -48,17 +56,12 @@ Show # Currency - Low
 
 # Section: Maps, Uniques, Quest Items, Labyrinth Items
 
-Show # Maps/Fragments
-    Class "Map"
-    BaseType "Overgrown Shrine"
-    SetFontSize 38
-
 # Adjust font size of: uniques, maps (includes sacrifice fragments), quest items, and 
 Show #Maps I care about
     Class "Map"
-        BaseType "Abyss" "Colosseum" "Core" "Shrine Map" "Palace" "Courtyard" "Excavation" "Wasteland" "Waterways" "Arsenal" "Overgrown Ruin" "Shipyard" "Academy" "Crematorium" "Precinct" "Springs" "Bazaar" "Necropolis" "Plateau" "Chateau" "Volcano" "Arid Lake" "Gorge" "Residence" "Underground River" "Malformation" "Canyon" "Cells" "Dark Forest" "Orchard"
-        PlayAlertSound 1 300
-        SetFontSize 42
+    DropLevel > 76
+    PlayAlertSound 1 300
+    SetFontSize 42
         
 Show # Maps/Fragments
     Class "Map"
@@ -85,7 +88,7 @@ Show # Valuables - Uniques
 
 # Section: Flasks
 
-# Add a border to flasks that are near the current level or have 15%+ quality
+# Add a border to flasks that are near the current level or have 10%+ quality
 Show # Flasks - Utility
     Class "Utility Flask"
     BaseType "Granite Flask" "Ruby Flask" "Topaz Flask" "Jade Flask" "Quicksilver Flask" "Quartz Flask" "Diamond Flask" "Basalt Flask" "Aquamarine Flask" "Stibnite Flask" "Sulphur Flask" "Silver Flask" "Bismuth Flask"
@@ -98,7 +101,7 @@ Show # Flasks - non-white sapphire and amyth flasks
     SetBorderColor 88 0 179 # Utility/Hybrid/Quality flask
     
 Show # Flasks - Quality
-    Quality >= 5
+    Quality >= 10
     Class "Flask"
     SetBorderColor 88 0 179 # Utility/Hybrid/Quality flask
 
@@ -200,14 +203,14 @@ Show # Flasks - Life - Divine+ - (over 70)
 Show # Valuables - Fishing Rods, Jewels, Div Cards
     Class "Fishing Rod" "Jewel" "Divination Card"
     SetBorderColor 150 0 0 # Special drops
-    SetFontSize 42
+    SetFontSize 38
     PlayAlertSound 7 100
 
 Show # Valuables Talismans
     Class "Amulet"
         BaseType "Talisman"
         SetBorderColor 150 0 0 # Special drops
-        SetFontSize 42
+        SetFontSize 38
     
 # Section: Links and Sockets
 
@@ -321,36 +324,35 @@ Show # Gems - Active
 
 # Section: Base Items
 
-# Add a dark green border to normal items of desired chance bases
-Show # Bases - Chance
-    Rarity = Normal
-    BaseType "Judgement Staff" "Sorcerer Boots" "Sapphire Flask"
-    SetBorderColor 0 73 0 # Chance bases
-
 # Add a teal border to ilvl 77+ items of desired bases
-Show # Bases - 77+ jewelry
-    ItemLevel >= 75
+Show # Bases - 83+ jewelry
+    ItemLevel >= 83
     Rarity = Normal
     Class "Amulets" "Rings" "Belts"
     SetBorderColor 54 100 146 # Crafting bases
 
+Show # Bases - Atlas crafting gear, same teal border but bigger text
+    BaseType "Blue Pearl" "Bone Helmet" "Crystal Belt" "Fingerless" "Gripped" "Marble Amulet" "Opal Ring" "Spiked Gloves" "Steel Ring" "Two-Toned" "Vanguard Belt" "Breach Ring"
+    SetFontSize 38
+    SetBorderColor 54 100 146 # Crafting bases
+
 Show # Bases - 83+ crafting weapons (phys), same teal border but bigger text
     ItemLevel >= 83
-    BaseType "Maraketh Bow" "Harbinger Bow" "Imbued Wand" "Eternal Sword" "Exquisite Blade"
+    BaseType BaseType "Maraketh Bow" "Eclipse Staff" "Exquisite Blade" "Coronal Maul" "Fleshripper" "Dragoon Sword" "Sambar Sceptre" "Runic Hatchet" "Tiger Hook" "Behemoth Mace" "Profane Wand" "Gemini Claw" "Imbued Wand" "Vaal Axe" "Harbinger Bow" "Ambusher" "Platinum Kris" "Maelst" "Judgement Staff" "Void Sceptre" "Harpy Rapier" "Opal Wand"
     SetFontSize 38
     SetBorderColor 54 100 146 # Crafting bases
 
 Show # Bases - 84+ crafting armor (life, es, resists), same teal border but bigger text
     ItemLevel >= 84
-    BaseType "Eternal Burgonet" "Vaal Regalia" "Lion Pelt" "Hubris Circlet" "Glorious Plate" "Titanium Spirit Shield" "Harmonic Spirit Shield"  "Imperial Buckler" "Supreme Spiked Shield"
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield"
     SetFontSize 38
     SetBorderColor 54 100 146 # Crafting bases
 
-Show # Bases - 84+ crafting amulets (spell dmg), same teal border but bigger text 
-    ItemLevel >= 84
-    Class "Amulets"
-    SetFontSize 38
-    SetBorderColor 54 100 146 # Crafting bases
+# Add a dark green border to normal items of desired chance bases
+Show # Bases - Chance
+    Rarity = Normal
+    BaseType "Judgement Staff" "Sorcerer Boots" "Sapphire Flask" "Agate Amulet"
+    SetBorderColor 0 73 0 # Chance bases
     
 # Section: Rares
 
@@ -360,7 +362,7 @@ Show # Rares - Other
 
 # Section: Other Items (accessories, chisel hammers, Maraketh weapons, Sacrificial Garb)
 
-# Always show Maraketh weapons (capped by level), accessories (reduced size), hammers (white or magic 12%), and sacrificial garbs
+# Always show accessories (reduced size), hammers (white or magic 12%), and sacrificial garbs
 Show # Chisel Hammers
     Rarity = Normal
     BaseType "Stone Hammer" "Rock Breaker" "Gavel"
@@ -372,26 +374,6 @@ Show # Chisel Hammers
 
 Show # Valuables - Sacrificial Garb
     BaseType "Sacrificial Garb"
-
-Show # Maraketh Weapons - Normal
-    ItemLevel < 50
-    BaseType "Reflex Bow" "Crescent Staff" "Curved Blade" "Morning Star" "Dagger Axe" "Smallsword" "Horned Sceptre" "Etched Hatchet" "Hook Sword" "Wyrm Mace" "Prong Dagger" "Pagan Wand" "Double Claw"
-    SetFontSize 25
-
-Show # Maraketh Weapons - Cruel
-    ItemLevel < 70
-    BaseType "Steelwood Bow" "Moon Staff" "Lithe Blade" "Solar Maul" "Talon Axe" "Courtesan Sword" "Stag Sceptre" "Engraved Hatchet" "Grappler" "Dragon Mace" "Trisula" "Heathen Wand" "Twin Claw"
-    SetFontSize 25
-
-Show # Maraketh Weapons - Merciless
-    BaseType "Maraketh Bow" "Eclipse Staff" "Exquisite Blade" "Coronal Maul" "Fleshripper" "Dragoon Sword" "Sambar Sceptre" "Runic Hatchet" "Tiger Hook" "Behemoth Mace" "Profane Wand" "Gemini Claw"
-    Rarity = Normal
-    SetFontSize 25
-
-Show # Maraketh Weapons - Merciless required to prevent strange bug with showing other white items??
-    Class "Daggers"
-    BaseType "Sai"
-    SetFontSize 25
 
 #Highlight 4L items below level 50
 Show # Valuables - 4L
