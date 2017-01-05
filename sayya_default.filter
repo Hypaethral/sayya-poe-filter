@@ -328,7 +328,7 @@ Show # Rares - 75+ - Regal Recipe Jewelry
     ItemLevel >= 75
     Class "Rings" "Amulets" "Belts"
     SetBorderColor 136 136 255 # Regal recipe bright
-    
+
 Show # Dim non-recipe regal rare items
     Rarity = Rare
     ItemLevel >= 75
@@ -336,7 +336,7 @@ Show # Dim non-recipe regal rare items
     SetFontSize 20
     SetTextColor 200 200 119 180 # Dim yellow
 	SetBackgroundColor 0 0 0 127 # Dim background
-    
+
 Show # Dim regal recipe rare items
 	Rarity = Rare
     ItemLevel >= 75
@@ -367,7 +367,7 @@ Show # Dim chaos recipe stuff but add a border
     SetBorderColor 254 170 0 127 # Chaos recipe faint
     SetTextColor 200 200 119 180 # Dim yellow
 	SetBackgroundColor 0 0 0 127 # Dim background
-    
+
 # Show all rares not covered above (safeguard)
 Show # Rares - Other
     Rarity = Rare
