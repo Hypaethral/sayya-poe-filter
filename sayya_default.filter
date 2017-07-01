@@ -1,7 +1,11 @@
-# Sayya's Ty Edition item filter, v. 3.0 (12/29/2016)
-# 
+# Sayya's Ty Edition item filter, v. 3.11 (2017-03-08)
+#
 # Changelog:
 #
+# 2017-03-19 Updated chance bases, modified rendering of late game craftables (blues pending removing cuz ew, not decided yet)
+# 2017-03-08 v3.1 modified leaguestone sounds (v quiet addition for blues), added chrome size support, added reliquary key
+# Added leaguestones
+# Made stricter rare control end game, and added adaptive leveling stuff
 # Refined shit at random now that breach has been going on for a while; fixed mapstuff; added atlas stuff (12/29/2016)
 # Removed shit at random to prepare for breach :D (12/3/2016)
 # Added support for Prophecy (6/3/2016)
@@ -44,7 +48,7 @@ Show # Currency - Mid
 
 # Add a unique border and sound to high-end currency (AlertSound5)
 Show # Currency - High
-    BaseType "Exalted" "Divine Orb" "Eternal Orb" "Mirror of" "Feather"
+    BaseType "Exalted" "Divine Orb" "Eternal Orb" "Mirror of" "Feather" "Ancient Reliquary Key"
     SetBorderColor 175 96 37 # Rare currency
     SetFontSize 42
     PlayAlertSound 5 300
@@ -55,7 +59,7 @@ Show # Currency - Low
 
 # Section: Maps, Uniques, Quest Items, Labyrinth Items
 
-# Adjust font size of: uniques, maps (includes sacrifice fragments), quest items, and 
+# Adjust font size of: uniques, maps (includes sacrifice fragments), quest items, and
 Show #Maps I care about
     Class "Map"
     DropLevel > 76
@@ -65,6 +69,19 @@ Show #Maps I care about
 Show # Maps/Fragments
     Class "Map"
     SetFontSize 38
+
+Show # Magic Leaguestons
+    BaseType "Leaguestone"
+    SetFontSize 38
+    Rarity >= Magic
+    SetBackgroundColor 0 0 0 255 # Contrast background
+    PlayAlertSound 3 100
+
+Show # Other Leaguestons
+    BaseType "Leaguestone"
+    SetFontSize 38
+    Rarity = Normal
+    SetBackgroundColor 0 0 0 255 # Contrast background
 
 Show # Quest Items
     Class "Quest"
@@ -229,17 +246,47 @@ Show # Valuables - 6S
     PlayAlertSound 2 300
 
 # Slightly lighten white/magic RGB items a la Antnee
-Show # Valuables - RGB Items
+Show # Valuables - RGB Items - white small
     Rarity = Normal
     SocketGroup "RGB"
+    Width <= 2
+    Height <= 2
     SetTextColor 255 255 255 # RGB whites
     SetBackgroundColor 0 0 0 255 # Contrast background
 
-Show # Valuables - RGB Items
+Show # Valuables - RGB Items - white thin
+    Rarity = Normal
+    SocketGroup "RGB"
+    Width <= 1
+    Height <= 3
+    SetTextColor 255 255 255 # RGB whites
+    SetBackgroundColor 0 0 0 255 # Contrast background
+
+Show # Valuables - RGB Items - white thicc
+    Rarity = Normal
+    SocketGroup "RGB"
+    SetFontSize 24
+
+Show # Valuables - RGB Items - blue small
     Rarity = Magic
     SocketGroup "RGB"
+    Width <= 2
+    Height <= 2
     SetTextColor 125 175 255 # RGB blues
     SetBackgroundColor 0 0 0 255 # Contrast background
+
+Show # Valuables - RGB Items - blue thin
+    Rarity = Magic
+    SocketGroup "RGB"
+    Width <= 1
+    Height <= 3
+    SetTextColor 125 175 255 # RGB blues
+    SetBackgroundColor 0 0 0 255 # Contrast background
+
+Show # Valuables - RGB Items - blue thicc
+    Rarity = Magic
+    SocketGroup "RGB"
+    SetFontSize 24
 
 # Section: Gems
 
@@ -273,7 +320,7 @@ Show # Gems - Active
 
 # Section: Base Items
 
-# Add a teal border to ilvl 77+ items of desired bases
+# Add a teal border to ilvl 83+ items of desired bases
 Show # Bases - 83+ jewelry
     ItemLevel >= 83
     Rarity = Normal
@@ -285,22 +332,22 @@ Show # Bases - Atlas crafting gear, same teal border but bigger text
     SetFontSize 38
     SetBorderColor 54 100 146 # Crafting bases
 
-Show # Bases - 83+ crafting weapons (phys), same teal border but bigger text
+Show # Bases - 83+ crafting weapons (phys)
     ItemLevel >= 83
+    Rarity = Normal
     BaseType "Maraketh Bow" "Eclipse Staff" "Exquisite Blade" "Coronal Maul" "Fleshripper" "Dragoon Sword" "Sambar Sceptre" "Runic Hatchet" "Tiger Hook" "Behemoth Mace" "Profane Wand" "Gemini Claw" "Imbued Wand" "Vaal Axe" "Harbinger Bow" "Ambusher" "Platinum Kris" "Maelst" "Judgement Staff" "Void Sceptre" "Harpy Rapier" "Opal Wand"
-    SetFontSize 38
     SetBorderColor 54 100 146 # Crafting bases
 
-Show # Bases - 84+ crafting armor (life, es, resists), same teal border but bigger text
+Show # Bases - 84+ crafting armor (life, es, resists)
     ItemLevel >= 84
-    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield"
-    SetFontSize 38
+    Rarity = Normal
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Deicide Mask"
     SetBorderColor 54 100 146 # Crafting bases
 
 # Add a dark green border to normal items of desired chance bases
 Show # Bases - Chance
     Rarity = Normal
-    BaseType "Judgement Staff" "Sorcerer Boots" "Sapphire Flask" "Agate Amulet"
+    BaseType "Sorcerer Boots" "Sapphire Flask" "Deicide Mask" "Occultist's Vestment"
     SetBorderColor 0 73 0 # Chance bases
 
 # Section: Rares
@@ -312,6 +359,18 @@ Show # Good Rares - Regal
     BaseType "Fleshripper" "Eclipse Staff" "Exquisite Blade" "Maraketh Bow" "Coronal Maul" "Vaal Axe" "Harbinger Bow" "Imperial Staff" "Astral Plate" "Glorious Plate" "Zodiac Leather" "Assassin's Garb" "Vaal Regalia" "Full Dragonscale" "General's Brigandine" "Triumphant Lamellar" "Saint's Hauberk" "Saintly Chainmail" "Blood Raiment" "Sadist Garb" "Carnal Armour" "Sacrificial Garb" "Royal Burgonet" "Eternal Burgonet" "Lion Pelt" "Hubris Circlet" "Pig-Faced Bascinet" "Nightmare Bascinet" "Prophet Crown" "Praetor Crown" "Deicide Mask" "Vaal Mask" "Golden Wreath" "Titan Gauntlets" "Slink Gloves" "Sorcerer Gloves" "Dragonscale Gauntlets" "Crusader Gloves" "Murder Mitts" "Titan Greaves" "Slink Boots" "Sorcerer Boots" "Dragonscale Boots" "Crusader Boots" "Murder Boots" "Assassin's Boots"
     SetBorderColor 136 136 255 # Regal recipe bright
 
+Show # Bases - 83+ crafting weapons (phys), same teal border but bigger text (blue)
+    ItemLevel >= 83
+    Rarity > Normal
+    BaseType "Maraketh Bow" "Eclipse Staff" "Exquisite Blade" "Coronal Maul" "Fleshripper" "Dragoon Sword" "Sambar Sceptre" "Runic Hatchet" "Tiger Hook" "Behemoth Mace" "Profane Wand" "Gemini Claw" "Imbued Wand" "Vaal Axe" "Harbinger Bow" "Ambusher" "Platinum Kris" "Maelst" "Judgement Staff" "Void Sceptre" "Harpy Rapier" "Opal Wand"
+    SetFontSize 28
+
+Show # Bases - 84+ crafting armor (life, es, resists), same teal border but bigger text (blue)
+    ItemLevel >= 84
+    Rarity > Normal
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Deicide Mask"
+    SetFontSize 28
+
 Show # Good Rares - Chaos
     Rarity = Rare
     ItemLevel >= 60
@@ -320,6 +379,7 @@ Show # Good Rares - Chaos
 
 Show # Good Rares - Rest
     Rarity = Rare
+    ItemLevel >= 60
     BaseType "Sai" "Dragoon Sword" "Gemini Claw" "Behemoth Mace" "Tiger Hook" "Profane Wand" "Runic Hatchet" "Sambar Sceptre" "Platinum Kris" "Golden Kris" "Ambusher" "Gavel" "Opal Sceptre" "Jewelled Foil" "Vaal Rapier" "Prophecy Wand" "Imbued Wand" "Pinnacle Tower Shield" "Colossal Tower Shield" "Ezomyte Tower Shield" "Imperial Buckler" "Crusader Buckler" "Vaal Buckler" "Lacquered Buckler" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Vaal Spirit Shield" "Fossilised Spirit Shield" "Elegant Round Shield" "Cardinal Round Shield" "Spiny Round Shield" "Archon Kite Shield" "Mosaic Kite Shield" "Champion Kite Shield" "Supreme Spiked Shield" "Mirrored Spiked Shield" "Ezomyte Spiked Shield"
 
 # Add a light blue border to regal recipe rares
@@ -335,15 +395,15 @@ Show # Dim non-recipe regal rare items
     Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
     SetFontSize 20
     SetTextColor 200 200 119 180 # Dim yellow
-	SetBackgroundColor 0 0 0 127 # Dim background
+    SetBackgroundColor 0 0 0 127 # Dim background
 
 Show # Dim regal recipe rare items
-	Rarity = Rare
+    Rarity = Rare
     ItemLevel >= 75
-	SetFontSize 28
+    SetFontSize 28
     SetBorderColor 136 136 255 200 # Regal recipe faint
     SetTextColor 200 200 119 180 # Dim yellow
-	SetBackgroundColor 0 0 0 127 # Dim background
+    SetBackgroundColor 0 0 0 127 # Dim background
 
 # Add a yellow border to chaos recipe rares
 Show # Rares - 60+ - Chaos recipe Jewelry
@@ -353,27 +413,31 @@ Show # Rares - 60+ - Chaos recipe Jewelry
     SetBorderColor 254 170 0 # Chaos recipe bright
 
 Show # Dim non-recipe chaos rare items
-	Rarity = Rare
+    Rarity = Rare
     ItemLevel >= 60
     Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
-	SetFontSize 20
+    SetFontSize 20
     SetTextColor 200 200 119 180 # Dim yellow
-	SetBackgroundColor 0 0 0 127 # Dim background
+    SetBackgroundColor 0 0 0 127 # Dim background
 
 Show # Dim chaos recipe stuff but add a border
     Rarity = Rare
-	ItemLevel >= 60
-	SetFontSize 24
+    ItemLevel >= 60
+    SetFontSize 24
     SetBorderColor 254 170 0 127 # Chaos recipe faint
     SetTextColor 200 200 119 180 # Dim yellow
-	SetBackgroundColor 0 0 0 127 # Dim background
+    SetBackgroundColor 0 0 0 127 # Dim background
 
-# Show all rares not covered above (safeguard)
-Show # Rares - Other
+Show # Rares - Don't make people below 60 sad
+    Rarity = Rare
+    ItemLevel < 60
+
+# Dim all rares not covered above (safeguard)
+Show # Rares - Rest
     Rarity = Rare
     SetFontSize 20
     SetTextColor 200 200 119 180 # Dim yellow
-	SetBackgroundColor 0 0 0 127 # Dim background
+    SetBackgroundColor 0 0 0 127 # Dim background
 
 # Section: Other Items (accessories, chisel hammers, Maraketh weapons, Sacrificial Garb)
 
@@ -439,25 +503,8 @@ Hide # Trash - Low Base
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
 
-Hide # Trash - Low Base
+Hide # Trash - Stop giving a shit about whites
     ItemLevel >= 55
-    DropLevel <= 50
-    Rarity = Normal
-    SetTextColor 150 150 150 180 # Dim white
-    SetBackgroundColor 0 0 0 127 # Dim background
-    SetFontSize 25
-
-Hide # Trash - Low Base
-    ItemLevel >= 68
-    DropLevel <= 61
-    Rarity = Normal
-    SetTextColor 150 150 150 180 # Dim white
-    SetBackgroundColor 0 0 0 127 # Dim background
-    SetFontSize 25
-
-Hide # Trash - Low Base
-    ItemLevel >= 75
-    DropLevel <= 69
     Rarity = Normal
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
@@ -503,25 +550,8 @@ Hide # Trash - Low Base
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
 
-Hide # Trash - Low Base
+Hide # Trash - Stop giving a shit about blues
     ItemLevel >= 55
-    DropLevel <= 50
-    Rarity = Magic
-    SetTextColor 95 95 179 180 # Dim blue
-    SetBackgroundColor 0 0 0 127 # Dim background
-    SetFontSize 25
-
-Hide # Trash - Low Base
-    ItemLevel >= 68
-    DropLevel <= 61
-    Rarity = Magic
-    SetTextColor 95 95 179 180 # Dim blue
-    SetBackgroundColor 0 0 0 127 # Dim background
-    SetFontSize 25
-
-Hide # Trash - Low Base
-    ItemLevel >= 75
-    DropLevel <= 69
     Rarity = Magic
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
