@@ -1,7 +1,10 @@
-# Sayya's Ty Edition item filter, v. 3.11 (2017-03-08)
+# Sayya's Ty Edition item filter, v. 4.0 (2017-08-06)
 #
 # Changelog:
-#
+# 2017-08-06 v4.0 for 3.0.0 release
+# - Friendlier hiding rules: hold alt to see all rares (alt = alteration mode :D); blue jewelry shows up while leveling
+# - Added Harbinger shard support
+# - Currency is a little easier to pick up
 # 2017-03-19 Updated chance bases, modified rendering of late game craftables (blues pending removing cuz ew, not decided yet)
 # 2017-03-08 v3.1 modified leaguestone sounds (v quiet addition for blues), added chrome size support, added reliquary key
 # Added leaguestones
@@ -33,22 +36,27 @@
 
 # Section: Currency
 
-# Add a currency-colored border to shitkid currency
+# Add a font size to shitkid currency
+Show # Currency - Low
+    BaseType "Orb of Transmutation" "Orb of Augmentation" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Orb of Chance"
+    SetFontSize 38
+
+# Add a currency-colored border to low currency
 Show # Currency - Shit you always wanna pick up but you don't wanna make a fuss about it (no sound)
-    BaseType "Splinter of" "Perandus Coin" "Silver Coin"
+    BaseType "Splinter of" "Perandus Coin" "Silver Coin" "Harbinger's Shard" "Ancient Shard" "Engineer's Shard" "Binding Shard" "Annulment Shard" "Horizon Shard"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
 
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Unshaping Orb" "Blessing of" "Essence of"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Essence of" "Exalted Shard"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
 
 # Add a unique border and sound to high-end currency (AlertSound5)
 Show # Currency - High
-    BaseType "Exalted" "Divine Orb" "Eternal Orb" "Mirror of" "Feather" "Ancient Reliquary Key"
+    BaseType "Exalted Orb" "Mirror Shard" "Divine Orb" "Eternal Orb" "Mirror of" "Feather" "Ancient Reliquary Key"
     SetBorderColor 175 96 37 # Rare currency
     SetFontSize 42
     PlayAlertSound 5 300
@@ -56,6 +64,7 @@ Show # Currency - High
 # Default handling of other currency
 Show # Currency - Low
     Class "Currency"
+
 
 # Section: Maps, Uniques, Quest Items, Labyrinth Items
 
@@ -328,7 +337,13 @@ Show # Bases - 83+ jewelry
     SetBorderColor 54 100 146 # Crafting bases
 
 Show # Bases - Atlas crafting gear, same teal border but bigger text
-    BaseType "Blue Pearl" "Bone Helmet" "Crystal Belt" "Fingerless" "Gripped" "Marble Amulet" "Opal Ring" "Spiked Gloves" "Steel Ring" "Two-Toned" "Vanguard Belt" "Breach Ring"
+    BaseType "Blue Pearl" "Bone Helmet" "Fingerless" "Gripped" "Marble Amulet" "Opal Ring" "Spiked Gloves" "Two-Toned" "Vanguard Belt" "Breach Ring"
+    SetFontSize 38
+    SetBorderColor 54 100 146 # Crafting bases
+
+Show # Bases - Atlas crafting gear that's valuable, play a sound
+    BaseType "Crystal Belt" "Steel Ring"
+    PlayAlertSound 5 300
     SetFontSize 38
     SetBorderColor 54 100 146 # Crafting bases
 
@@ -415,6 +430,7 @@ Show # Rares - 60+ - Chaos recipe Jewelry
 Show # Dim non-recipe chaos rare items
     Rarity = Rare
     ItemLevel >= 60
+    DropLevel >= 71
     Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
     SetFontSize 20
     SetTextColor 200 200 119 180 # Dim yellow
@@ -423,14 +439,26 @@ Show # Dim non-recipe chaos rare items
 Show # Dim chaos recipe stuff but add a border
     Rarity = Rare
     ItemLevel >= 60
+    DropLevel >= 71
     SetFontSize 24
     SetBorderColor 254 170 0 127 # Chaos recipe faint
     SetTextColor 200 200 119 180 # Dim yellow
     SetBackgroundColor 0 0 0 127 # Dim background
 
-Show # Rares - Don't make people below 60 sad
+Show # Rares - Chaos non-recipe without dimming below 70
     Rarity = Rare
-    ItemLevel < 60
+    Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
+    ItemLevel <= 70
+
+Show # Rares - Chaos recipe without dimming below 70
+    Rarity = Rare
+    SetBorderColor 254 170 0 # Chaos recipe bright
+    ItemLevel <= 70
+    ItemLevel >= 60
+
+Show # Rares - Don't make people below 70 sad
+    Rarity = Rare
+    ItemLevel <= 70
 
 # Dim all rares not covered above (safeguard)
 Show # Rares - Rest
@@ -460,8 +488,13 @@ Show # Valuables - 4L
     ItemLevel < 50
     SetBackgroundColor 0 0 0 255 # Contrast background
 
-# Section: Cleanup (hiding)
+Show # leveling jewelry
+    Rarity = Magic
+    ItemLevel < 50
+    SetFontSize 28
+    Class "Amulets" "Rings" "Belts"
 
+# Section: Cleanup (hiding)
 # Hide white and magic items with a substantial gap between drop and item level (REMOVE FROM HERE UNTIL NEXT COMMENT if you want nothing hidden)
 Hide # Trash - Low Base
     ItemLevel >= 20
