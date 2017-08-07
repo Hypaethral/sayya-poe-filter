@@ -429,8 +429,8 @@ Show # Rares - 60+ - Chaos recipe Jewelry
 
 Show # Dim non-recipe chaos rare items
     Rarity = Rare
-    ItemLevel >= 60
-    DropLevel >= 71
+    ItemLevel <= 75
+    ItemLevel > 72
     Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
     SetFontSize 20
     SetTextColor 200 200 119 180 # Dim yellow
@@ -438,8 +438,8 @@ Show # Dim non-recipe chaos rare items
 
 Show # Dim chaos recipe stuff but add a border
     Rarity = Rare
-    ItemLevel >= 60
-    DropLevel >= 71
+    ItemLevel <= 75
+    ItemLevel > 72
     SetFontSize 24
     SetBorderColor 254 170 0 127 # Chaos recipe faint
     SetTextColor 200 200 119 180 # Dim yellow
@@ -448,17 +448,18 @@ Show # Dim chaos recipe stuff but add a border
 Show # Rares - Chaos non-recipe without dimming below 70
     Rarity = Rare
     Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
-    ItemLevel <= 70
+    ItemLevel <= 72
+    ItemLevel >= 60
 
 Show # Rares - Chaos recipe without dimming below 70
     Rarity = Rare
-    SetBorderColor 254 170 0 # Chaos recipe bright
-    ItemLevel <= 70
+    SetBorderColor 254 170 170 # Chaos recipe bright
+    ItemLevel <= 72
     ItemLevel >= 60
 
 Show # Rares - Don't make people below 70 sad
     Rarity = Rare
-    ItemLevel <= 70
+    ItemLevel < 72
 
 # Dim all rares not covered above (safeguard)
 Show # Rares - Rest
