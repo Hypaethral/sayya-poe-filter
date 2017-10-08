@@ -2,7 +2,7 @@
 #
 # Changelog:
 # 2017-08-06 v4.0 for 3.0.0 release
-# - Friendlier hiding rules: hold alt to see all rares (alt = alteration mode :D); blue jewelry shows up while leveling
+# - Friendlier hiding rules (starts dimming around yellow maps instead of during act 8); blue jewelry shows up while leveling
 # - Added Harbinger shard support
 # - Currency is a little easier to pick up
 # 2017-03-19 Updated chance bases, modified rendering of late game craftables (blues pending removing cuz ew, not decided yet)
@@ -38,7 +38,7 @@
 
 # Add a font size to shitkid currency
 Show # Currency - Low
-    BaseType "Orb of Transmutation" "Orb of Augmentation" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Orb of Chance"
+    BaseType "Orb of Transmutation" "Orb of Augmentation" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Orb of Chance" "Glassblower's Bauble"
     SetFontSize 38
 
 # Add a currency-colored border to low currency
@@ -68,7 +68,13 @@ Show # Currency - Low
 
 # Section: Maps, Uniques, Quest Items, Labyrinth Items
 
-# Adjust font size of: uniques, maps (includes sacrifice fragments), quest items, and
+# Adjust font size of: uniques, maps (includes sacrifice fragments), quest items, and lab stuff
+Show #Maps I care about
+    Class "Map"
+    DropLevel > 76
+    PlayAlertSound 1 300
+    SetFontSize 42
+
 Show #Maps I care about
     Class "Map"
     DropLevel > 76
@@ -231,6 +237,12 @@ Show # Valuables - Fishing Rods, Jewels, Div Cards
     SetFontSize 38
     PlayAlertSound 7 100
 
+Show # Valuables - Divine Vessel
+    BaseType "Divine Vessel"
+    SetBorderColor 150 0 0 # Special drops
+    SetFontSize 38
+    PlayAlertSound 7 100
+
 Show # Valuables Talismans
     Class "Amulet"
         BaseType "Talisman"
@@ -356,13 +368,13 @@ Show # Bases - 83+ crafting weapons (phys)
 Show # Bases - 84+ crafting armor (life, es, resists)
     ItemLevel >= 84
     Rarity = Normal
-    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Deicide Mask"
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask"
     SetBorderColor 54 100 146 # Crafting bases
 
 # Add a dark green border to normal items of desired chance bases
 Show # Bases - Chance
     Rarity = Normal
-    BaseType "Sorcerer Boots" "Sapphire Flask" "Deicide Mask" "Occultist's Vestment"
+    BaseType "Sorcerer Boots" "Sapphire Flask" "Deicide Mask" "Occultist's Vestment" "Glorious Plate"
     SetBorderColor 0 73 0 # Chance bases
 
 # Section: Rares
@@ -383,7 +395,7 @@ Show # Bases - 83+ crafting weapons (phys), same teal border but bigger text (bl
 Show # Bases - 84+ crafting armor (life, es, resists), same teal border but bigger text (blue)
     ItemLevel >= 84
     Rarity > Normal
-    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Deicide Mask"
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask"
     SetFontSize 28
 
 Show # Good Rares - Chaos
@@ -395,7 +407,7 @@ Show # Good Rares - Chaos
 Show # Good Rares - Rest
     Rarity = Rare
     ItemLevel >= 60
-    BaseType "Sai" "Dragoon Sword" "Gemini Claw" "Behemoth Mace" "Tiger Hook" "Profane Wand" "Runic Hatchet" "Sambar Sceptre" "Platinum Kris" "Golden Kris" "Ambusher" "Gavel" "Opal Sceptre" "Jewelled Foil" "Vaal Rapier" "Prophecy Wand" "Imbued Wand" "Pinnacle Tower Shield" "Colossal Tower Shield" "Ezomyte Tower Shield" "Imperial Buckler" "Crusader Buckler" "Vaal Buckler" "Lacquered Buckler" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Vaal Spirit Shield" "Fossilised Spirit Shield" "Elegant Round Shield" "Cardinal Round Shield" "Spiny Round Shield" "Archon Kite Shield" "Mosaic Kite Shield" "Champion Kite Shield" "Supreme Spiked Shield" "Mirrored Spiked Shield" "Ezomyte Spiked Shield"
+    BaseType "Sai" "Dragoon Sword" "Gemini Claw" "Behemoth Mace" "Tiger Hook" "Profane Wand" "Runic Hatchet" "Sambar Sceptre" "Platinum Kris" "Golden Kris" "Ambusher" "Gavel" "Opal Sceptre" "Void Sceptre" "Jewelled Foil" "Vaal Rapier" "Prophecy Wand" "Imbued Wand" "Opal Wand" "Pinnacle Tower Shield" "Colossal Tower Shield" "Ezomyte Tower Shield" "Imperial Buckler" "Crusader Buckler" "Vaal Buckler" "Lacquered Buckler" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Vaal Spirit Shield" "Fossilised Spirit Shield" "Elegant Round Shield" "Cardinal Round Shield" "Spiny Round Shield" "Archon Kite Shield" "Mosaic Kite Shield" "Champion Kite Shield" "Supreme Spiked Shield" "Mirrored Spiked Shield" "Ezomyte Spiked Shield"
 
 # Add a light blue border to regal recipe rares
 Show # Rares - 75+ - Regal Recipe Jewelry
@@ -453,7 +465,7 @@ Show # Rares - Chaos non-recipe without dimming below 70
 
 Show # Rares - Chaos recipe without dimming below 70
     Rarity = Rare
-    SetBorderColor 254 170 170 # Chaos recipe bright
+    SetBorderColor 254 170 0 # Chaos recipe bright
     ItemLevel <= 72
     ItemLevel >= 60
 
