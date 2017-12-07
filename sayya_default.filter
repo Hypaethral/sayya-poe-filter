@@ -1,7 +1,7 @@
 # Sayya's Ty Edition item filter, v. 4.1 (2017-12-07)
 #
 # Changelog:
-# 2017-12-07 v4.1 support for 3.1 release (shaper items, new abyss jewels).  Added div card tiers from neversink.  Fixed divine vessel drop sound.  Reworked some drop sounds surrounding div cards and jewels.  Granulated essence drop sounds and display based on tier
+# 2017-12-07 v4.1 support for 3.1 release (shaper items, new abyss jewels).  Added div card tiers from neversink.  Fixed divine vessel drop sound.  Reworked some drop sounds surrounding div cards and jewels.  Granulated essence drop sounds and display based on tier.
 # 2017-08-06 v4.0 for 3.0.0 release
 # - Friendlier hiding rules (starts dimming around yellow maps instead of during act 8); blue jewelry shows up while leveling
 # - Added Harbinger shard support
@@ -266,6 +266,11 @@ Show # T4 - Garbage cards
     BaseType "Carrion Crow" "Cartographer's Delight" "Death" "Destined to Crumble" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Metalsmith's Gift" "Other Cheek" "Prosperity" "Rain of Chaos" "Struck by Lightning" "The Feast" "The Incantation" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Scholar" "The Sigil" "The Surgeon" "The Twins" "The Warden" "Thunderous Skies"
     SetFontSize 24
     SetBackgroundColor 0 0 0 127 # Dim background
+
+Show # Other / unknown cards (plays sound just to be safe)
+    Class "Divination"
+    SetFontSize 38
+    PlayAlertSound 12 100
 
 # Valuables - Fishing Rods
 Show # Valuables - Fishing Rods
