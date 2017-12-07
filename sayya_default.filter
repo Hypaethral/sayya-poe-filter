@@ -1,6 +1,7 @@
-# Sayya's Ty Edition item filter, v. 4.0 (2017-08-06)
+# Sayya's Ty Edition item filter, v. 4.1 (2017-12-07)
 #
 # Changelog:
+# 2017-12-07 v4.1 support for 3.1 release (shaper items, new abyss jewels).  Added div card tiers from neversink.  Fixed divine vessel drop sound.  Reworked some drop sounds surrounding div cards and jewels.  Granulated essence drop sounds and display based on tier
 # 2017-08-06 v4.0 for 3.0.0 release
 # - Friendlier hiding rules (starts dimming around yellow maps instead of during act 8); blue jewelry shows up while leveling
 # - Added Harbinger shard support
@@ -41,45 +42,47 @@ Show # Currency - Low
     BaseType "Orb of Transmutation" "Orb of Augmentation" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Orb of Chance" "Glassblower's Bauble"
     SetFontSize 38
 
-# Add a currency-colored border to low currency
-Show # Currency - Shit you always wanna pick up but you don't wanna make a fuss about it (no sound)
-    BaseType "Splinter of" "Perandus Coin" "Silver Coin" "Harbinger's Shard" "Ancient Shard" "Engineer's Shard" "Binding Shard" "Annulment Shard" "Horizon Shard"
-    SetBorderColor 170 158 130 # Uncommon currency
-    SetFontSize 38
-
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Essence of" "Exalted Shard"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Exalted Shard" "Screaming Essence of" "Deafening Essence of"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
 
 # Add a unique border and sound to high-end currency (AlertSound5)
 Show # Currency - High
-    BaseType "Exalted Orb" "Mirror Shard" "Divine Orb" "Eternal Orb" "Mirror of" "Feather" "Ancient Reliquary Key"
+    BaseType "Exalted Orb" "Mirror Shard" "Divine Orb" "Eternal Orb" "Mirror of" "Feather" "Ancient Reliquary Key" "Essence of Delirium" "Essence of Insanity" "Essence of Horror" "Essence of Hysteria"
     SetBorderColor 175 96 37 # Rare currency
     SetFontSize 42
     PlayAlertSound 5 300
+
+# Add a currency-colored border to low currency
+Show # Currency - Shit you always wanna pick up but you don't wanna make a fuss about it (no sound)
+    BaseType "Splinter of" "Perandus Coin" "Silver Coin" "Harbinger's Shard" "Ancient Shard" "Engineer's Shard" "Binding Shard" "Annulment Shard" "Horizon Shard" "Essence"
+    SetBorderColor 170 158 130 # Uncommon currency
+    SetFontSize 38
 
 # Default handling of other currency
 Show # Currency - Low
     Class "Currency"
 
-
 # Section: Maps, Uniques, Quest Items, Labyrinth Items
-
-# Adjust font size of: uniques, maps (includes sacrifice fragments), quest items, and lab stuff
-Show #Maps I care about
-    Class "Map"
-    DropLevel > 76
+# Adjust font size of: uniques, maps (includes sacrifice fragments & divine vessel), quest items, and lab stuff
+Show # Valuables - Divine Vessel
+    BaseType "Divine Vessel"
+    SetFontSize 40
     PlayAlertSound 1 300
-    SetFontSize 42
 
 Show #Maps I care about
     Class "Map"
     DropLevel > 76
     PlayAlertSound 1 300
     SetFontSize 42
+
+Show #Maps I sorta care about
+    Class "Map"
+    DropLevel > 71
+    SetFontSize 40
 
 Show # Maps/Fragments
     Class "Map"
@@ -229,25 +232,78 @@ Show # Flasks - Life - Divine+ - (over 70)
     SetFontSize 25
 
 # Section: Special Items
+# Valuables - Divination Cards
+Show # card exceptions (belongs in t4)
+    Class "Divination"
+    BaseType "The Wolf's Shadow"
+    SetFontSize 24
+    SetBackgroundColor 0 0 0 127 # Dim background
 
-# Add a red border and sound to special items: fishing rods, jewels (AlertSound7)
-Show # Valuables - Fishing Rods, Jewels, Div Cards
-    Class "Fishing Rod" "Jewel" "Divination Card"
-    SetBorderColor 150 0 0 # Special drops
+Show # T1 - Top tier cards
+    Class "Divination"
+    BaseType "Abandoned Wealth" "Bowyer's Dream" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Last Hope" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Fiend" "The Hunger" "The Immortal" "The King's Heart" "The Last One Standing" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Standoff" "The Thaumaturgist" "The Valkyrie" "The Vast" "The Wind" "The Wolf" "The Wolven King's Bite" "Wealth and Power"
+    SetFontSize 42
+    SetBackgroundColor 0 0 0 255         # Contrast background
+    SetBorderColor 175 96 37             # Rare currency border
+    PlayAlertSound 5 300                 # high-tier currency drop sound
+
+Show # T2 - Great cards
+    Class "Divination"
+    BaseType "Chaotic Disposition" "Lucky Deck" "Saint's Treasure" "The Brittle Emperor" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Fletcher" "The Formless Sea" "The Hoarder" "The Polymath" "The Risk" "The Valley of Steel Boxes" "The Void" "The Wretched" "Time-Lost Relic"
+    SetFontSize 40
+    SetBackgroundColor 0 0 0 255         # Contrast background
+    SetBorderColor 30 210 210            # divination border - tier 2
+    PlayAlertSound 12 300
+
+Show # T3 - Decent cards
+    Class "Divination"
+    BaseType "Earth Drinker" "Emperor of Purity" "Humility" "Jack in the Box" "Merciless Armament" "Mitts" "Scholar of the Seas" "Standoff" "The Body" "The Cursed King" "The Dark Mage" "The Forsaken" "The Inventor" "The Jester" "The Lion" "The Offering" "The Penitent" "The Porcupine" "The Soul" "The Stormcaller" "The Warlord" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite" "Wretched"
     SetFontSize 38
+    PlayAlertSound 12 100
+
+Show # T4 - Garbage cards
+    Class "Divination"
+    BaseType "Carrion Crow" "Cartographer's Delight" "Death" "Destined to Crumble" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Metalsmith's Gift" "Other Cheek" "Prosperity" "Rain of Chaos" "Struck by Lightning" "The Feast" "The Incantation" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Scholar" "The Sigil" "The Surgeon" "The Twins" "The Warden" "Thunderous Skies"
+    SetFontSize 24
+    SetBackgroundColor 0 0 0 127 # Dim background
+
+# Valuables - Fishing Rods
+Show # Valuables - Fishing Rods
+    Class "Fishing Rod"
+    SetBorderColor 175 96 37 # Rare currency border
+    SetFontSize 42
+    PlayAlertSound 5 300
+
+# Valuables - Jewels
+Show # Cobalt Jewels
+    BaseType "Cobalt Jewel"
+    SetFontSize 38
+    SetBorderColor 0 75 255
     PlayAlertSound 7 100
 
-Show # Valuables - Divine Vessel
-    BaseType "Divine Vessel"
-    SetBorderColor 150 0 0 # Special drops
+Show # Viridian Jewels
+    BaseType "Viridian Jewel"
     SetFontSize 38
+    SetBorderColor 0 150 0
     PlayAlertSound 7 100
 
-Show # Valuables Talismans
+Show # Crimson Jewels
+    BaseType "Crimson Jewel"
+    SetFontSize 38
+    SetBorderColor 150 0 0
+    PlayAlertSound 7 100
+
+Show # Abyss Jewels
+    Class "Abyss Jewel"
+    SetFontSize 38
+    SetBorderColor 160 160 160
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 7 100
+
+Show # Talismans
     Class "Amulet"
-        BaseType "Talisman"
-        SetBorderColor 150 0 0 # Special drops
-        SetFontSize 38
+    BaseType "Talisman"
+    SetFontSize 38
 
 # Section: Links and Sockets
 
@@ -313,11 +369,18 @@ Show # Valuables - RGB Items - blue thicc
 
 # Slightly enlarge and add a teal border to quality gems as well as Empower etc.; shrink all other gems slightly; slightly dim active gems.
 Show # Gems - Quality
+    Quality > 13
+    Class "Gem"
+    SetBorderColor 54 100 146 # Valuable/quality gems
+    SetFontSize 42
+    PlayAlertSound 13 300
+
+Show # Gems - Quality
     Quality > 0
     Class "Gem"
     SetBorderColor 54 100 146 # Valuable/quality gems
     SetFontSize 38
-    PlayAlertSound 1 200
+    PlayAlertSound 13 100
 
 Show # Gems - Valuable
     Class "Gem"
@@ -340,6 +403,20 @@ Show # Gems - Active
     SetFontSize 25
 
 # Section: Base Items
+# shaper / elder (REFINE ME AFTER LEAGUE START)
+Show # Elder Items
+    ElderItem True
+    SetFontSize 38
+    SetBorderColor 54 100 146 # Crafting bases
+    SetBackgroundColor 0 0 0 255 # Contrast background
+    PlayAlertSound 15 100
+
+Show # Shaper Items
+    ShaperItem True
+    SetFontSize 38
+    SetBorderColor 54 100 146 # Crafting bases
+    SetBackgroundColor 0 0 0 255 # Contrast background
+    PlayAlertSound 14 100
 
 # Add a teal border to ilvl 83+ items of desired bases
 Show # Bases - 83+ jewelry
@@ -378,7 +455,6 @@ Show # Bases - Chance
     SetBorderColor 0 73 0 # Chance bases
 
 # Section: Rares
-
 # Show only good rares!
 Show # Good Rares - Regal
     Rarity = Rare
