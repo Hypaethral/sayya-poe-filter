@@ -1,6 +1,7 @@
 # Sayya's Ty Edition item filter, v. 4.1 (2017-12-07)
 #
 # Changelog:
+# 2017-12-11 v4.2 fixed breach ring border bug, adjusted rare hiding rules from map lvl 71 to map lvl 68, merged chance base borders with craft base borders
 # 2017-12-07 v4.1 support for 3.1 release (shaper items, new abyss jewels).  Added div card tiers from neversink.  Fixed divine vessel drop sound.  Reworked some drop sounds surrounding div cards and jewels.  Granulated essence drop sounds and display based on tier.
 # 2017-08-06 v4.0 for 3.0.0 release
 # - Friendlier hiding rules (starts dimming around yellow maps instead of during act 8); blue jewelry shows up while leveling
@@ -36,7 +37,6 @@
 # Refined flask and quiver handling (4/30/2015)
 
 # Section: Currency
-
 # Add a font size to shitkid currency
 Show # Currency - Low
     BaseType "Orb of Transmutation" "Orb of Augmentation" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Orb of Chance" "Glassblower's Bauble"
@@ -437,12 +437,12 @@ Show # Bases - 83+ jewelry
     SetBorderColor 54 100 146 # Crafting bases
 
 Show # Bases - Atlas crafting gear, same teal border but bigger text
-    BaseType "Blue Pearl" "Bone Helmet" "Fingerless" "Gripped" "Marble Amulet" "Opal Ring" "Spiked Gloves" "Two-Toned" "Vanguard Belt" "Breach Ring"
+    BaseType "Blue Pearl" "Bone Helmet" "Fingerless" "Gripped" "Marble Amulet" "Opal Ring" "Spiked Gloves" "Two-Toned" "Vanguard Belt" "Crystal Belt"
     SetFontSize 38
     SetBorderColor 54 100 146 # Crafting bases
 
 Show # Bases - Atlas crafting gear that's valuable, play a sound
-    BaseType "Crystal Belt" "Steel Ring"
+    BaseType "Steel Ring"
     PlayAlertSound 5 300
     SetFontSize 38
     SetBorderColor 54 100 146 # Crafting bases
@@ -459,11 +459,11 @@ Show # Bases - 84+ crafting armor (life, es, resists)
     BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask"
     SetBorderColor 54 100 146 # Crafting bases
 
-# Add a dark green border to normal items of desired chance bases
+# Add a crafting border to normal items of desired chance bases
 Show # Bases - Chance
     Rarity = Normal
-    BaseType "Sorcerer Boots" "Sapphire Flask" "Deicide Mask" "Occultist's Vestment" "Glorious Plate"
-    SetBorderColor 0 73 0 # Chance bases
+    BaseType "Sorcerer Boots" "Sapphire Flask" "Occultist's Vestment" "Glorious Plate"
+    SetBorderColor 54 100 146 # Crafting bases
 
 # Section: Rares
 # Show only good rares!
@@ -529,7 +529,7 @@ Show # Rares - 60+ - Chaos recipe Jewelry
 Show # Dim non-recipe chaos rare items
     Rarity = Rare
     ItemLevel <= 75
-    ItemLevel > 72
+    ItemLevel > 70
     Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
     SetFontSize 20
     SetTextColor 200 200 119 180 # Dim yellow
@@ -538,27 +538,27 @@ Show # Dim non-recipe chaos rare items
 Show # Dim chaos recipe stuff but add a border
     Rarity = Rare
     ItemLevel <= 75
-    ItemLevel > 72
+    ItemLevel > 70
     SetFontSize 24
     SetBorderColor 254 170 0 127 # Chaos recipe faint
     SetTextColor 200 200 119 180 # Dim yellow
     SetBackgroundColor 0 0 0 127 # Dim background
 
-Show # Rares - Chaos non-recipe without dimming below 70
+Show # Rares - Chaos non-recipe without dimming below 70 (68 map level)
     Rarity = Rare
     Class "Shields" "One Hand" "Quivers" "Claws" "Daggers" "Wands" "Sceptres"
-    ItemLevel <= 72
+    ItemLevel <= 70
     ItemLevel >= 60
 
-Show # Rares - Chaos recipe without dimming below 70
+Show # Rares - Chaos recipe without dimming below 70 (68 map level)
     Rarity = Rare
     SetBorderColor 254 170 0 # Chaos recipe bright
-    ItemLevel <= 72
+    ItemLevel <= 70
     ItemLevel >= 60
 
-Show # Rares - Don't make people below 70 sad
+Show # Rares - Don't make people below 68 sad
     Rarity = Rare
-    ItemLevel < 72
+    ItemLevel < 70
 
 # Dim all rares not covered above (safeguard)
 Show # Rares - Rest
