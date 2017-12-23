@@ -1,6 +1,7 @@
-# Sayya's Ty Edition item filter, v. 4.1 (2017-12-07)
+# Sayya's Ty Edition item filter, v. 4.3 (2017-12-22)
 #
 # Changelog:
+# 2017-12-22 v4.3 fixed bug surrounding shaped maps' drop sound, added sound to stacked deck
 # 2017-12-11 v4.2 fixed breach ring border bug, adjusted rare hiding rules from map lvl 71 to map lvl 68, merged chance base borders with craft base borders
 # 2017-12-07 v4.1 support for 3.1 release (shaper items, new abyss jewels).  Added div card tiers from neversink.  Fixed divine vessel drop sound.  Reworked some drop sounds surrounding div cards and jewels.  Granulated essence drop sounds and display based on tier.
 # 2017-08-06 v4.0 for 3.0.0 release
@@ -44,7 +45,7 @@ Show # Currency - Low
 
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Exalted Shard" "Screaming Essence of" "Deafening Essence of"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Exalted Shard" "Screaming Essence of" "Deafening Essence of" "Stacked Deck"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
@@ -58,7 +59,7 @@ Show # Currency - High
 
 # Add a currency-colored border to low currency
 Show # Currency - Shit you always wanna pick up but you don't wanna make a fuss about it (no sound)
-    BaseType "Splinter of" "Perandus Coin" "Silver Coin" "Harbinger's Shard" "Ancient Shard" "Engineer's Shard" "Binding Shard" "Annulment Shard" "Horizon Shard" "Essence"
+    BaseType "Splinter of" "Perandus Coin" "Silver Coin" "Harbinger's Shard" "Ancient Shard" "Engineer's Shard" "Binding Shard" "Annulment Shard" "Horizon Shard" "Essence of"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
 
@@ -75,17 +76,28 @@ Show # Valuables - Divine Vessel
 
 Show #Maps I care about
     Class "Map"
+    Rarity <= Rare
     DropLevel > 76
+    PlayAlertSound 1 300
+    SetFontSize 42
+
+Show #Maps I care about
+    Class "Map"
+    Rarity <= Rare
+    DropLevel > 71
+    ShapedMap True
     PlayAlertSound 1 300
     SetFontSize 42
 
 Show #Maps I sorta care about
     Class "Map"
+    Rarity <= Rare
     DropLevel > 71
     SetFontSize 40
 
 Show # Maps/Fragments
     Class "Map"
+    Rarity <= Rare
     SetFontSize 38
 
 Show # Magic Leaguestons
