@@ -1,6 +1,7 @@
-# Sayya's Ty Edition item filter, v. 4.3 (2017-12-22)
+# Sayya's Ty Edition item filter, v. 5.0 (2018-03-02)
 #
 # Changelog:
+# 2018-03-02 v5.0 updated for POE 3.2.  Added Beastiary nets and orbs, updated chance bases, added slightly purpled background to prophecy unique bases, changed shield tiers and highlighting to reflect their potential in SST-era poe, added new tiered div cards based on Neversink's filter
 # 2017-12-22 v4.3 fixed bug surrounding shaped maps' drop sound, added sound to stacked deck
 # 2017-12-11 v4.2 fixed breach ring border bug, adjusted rare hiding rules from map lvl 71 to map lvl 68, merged chance base borders with craft base borders
 # 2017-12-07 v4.1 support for 3.1 release (shaper items, new abyss jewels).  Added div card tiers from neversink.  Fixed divine vessel drop sound.  Reworked some drop sounds surrounding div cards and jewels.  Granulated essence drop sounds and display based on tier.
@@ -45,14 +46,22 @@ Show # Currency - Low
 
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Exalted Shard" "Screaming Essence of" "Deafening Essence of" "Stacked Deck"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Bestiary Orb" Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Exalted Shard" "Screaming Essence of" "Deafening Essence of" "Stacked Deck"
+    SetBorderColor 170 158 130 # Uncommon currency
+    SetFontSize 38
+    PlayAlertSound 3 100
+
+# Add a currency-colored border to bestiary nets
+Show # Currency - Mid
+    Class Currency
+    BaseType "Thaumaturgical Net" "Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net" "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net" "Simple Rope Net" "Reinforced Rope Net" "Strong Rope Net"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
 
 # Add a unique border and sound to high-end currency (AlertSound5)
 Show # Currency - High
-    BaseType "Exalted Orb" "Mirror Shard" "Divine Orb" "Eternal Orb" "Mirror of" "Feather" "Ancient Reliquary Key" "Essence of Delirium" "Essence of Insanity" "Essence of Horror" "Essence of Hysteria"
+    BaseType "Exalted Orb" "Mirror Shard" "Divine Orb" "Eternal Orb" "Mirror of" "Feather" "Ancient Reliquary Key" "Essence of Delirium" "Essence of Insanity" "Essence of Horror" "Essence of Hysteria" "Albino Rhoa Feather"
     SetBorderColor 175 96 37 # Rare currency
     SetFontSize 42
     PlayAlertSound 5 300
@@ -126,6 +135,13 @@ Show # Labyrinth Treasure Items
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
+
+Show # Valuables - Prophecy Uniques
+    BaseType "Coral Amulet" "Coral Ring" "Crude Bow" "Death Bow" "Fire Arrow Quiver" "Gavel" "Gilded Sallet" "Goathide Gloves" "Golden Buckler" "Iron Hat" "Iron Ring" "Iron Staff" "Jade Amulet" "Jade Hatchet" "Jagged Maul" "Long Bow" "Ornate Sword" "Painted Buckler" "Plank Kite Shield" "Plate Vest" "Reaver Sword" "Reinforced Greaves" "Royal Bow" "Royal Staff" "Scholar Boots" "Serrated Arrow Quiver" "Sledgehammer" "Spiraled Wand" "Studded Belt" "Velvet Gloves" "Velvet Slippers" "Vine Circlet" "War Buckler" "Wild Leather" "Woodsplitter"
+    Rarity = Unique
+    SetFontSize 42
+    PlayAlertSound 8 200
+    SetBackgroundColor 10 0 30 # prophecy background
 
 Show # Valuables - Uniques
     Rarity = Unique
@@ -253,7 +269,7 @@ Show # card exceptions (belongs in t4)
 
 Show # T1 - Top tier cards
     Class "Divination"
-    BaseType "Abandoned Wealth" "Bowyer's Dream" "House of Mirrors" "Hunter's Reward" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Brittle Emperor" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Enlightened" "The Fiend" "The Formless Sea" "The Hunger" "The Immortal" "The King's Heart" "The Last One Standing" "The Offering" "The Queen" "The Spark and the Flame" "The Standoff" "The Thaumaturgist" "The Valkyrie" "The Vast" "Wealth and Power"
+    BaseType "Abandoned Wealth" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Last Hope" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Brittle Emperor" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Fiend" "The Formless Sea" "The Hunger" "The Immortal" "The King's Heart" "The Last One Standing" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Standoff" "The Thaumaturgist" "The Valkyrie" "The Vast" "The Wind" "The Wolf" "The Wolven King's Bite" "Wealth and Power" "The Iron Bard" "The World Eater"
     SetFontSize 42
     SetBackgroundColor 0 0 0 255         # Contrast background
     SetBorderColor 175 96 37             # Rare currency border
@@ -261,7 +277,7 @@ Show # T1 - Top tier cards
 
 Show # T2 - Great cards
     Class "Divination"
-    BaseType "Chaotic Disposition" "Emperor of Purity" "Heterochromia" "Last Hope" "Lucky Deck" "Saint's Treasure" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Ethereal" "The Forsaken" "The Hoarder" "The Risk" "The Saint's Treasure" "The Sephirot" "The Soul" "The Valley of Steel Boxes" "The Void" "The Wind" "The Wolf" "The Wolven King's Bite" "The Wretched"
+    BaseType "Bowyer's Dream" "Chaotic Disposition" "Emperor of Purity" "Humility" "Left to Fate" "Lingering Remnants" "Saint's Treasure" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Hoarder" "The Offering" "The Polymath" "The Porcupine" "The Risk" "The Soul" "The Throne" "The Valley of Steel Boxes" "The Void" "The Warlord" "Time-Lost Relic" "The Breach" "The Dreamer" "The Obscured"
     SetFontSize 40
     SetBackgroundColor 0 0 0 255         # Contrast background
     SetBorderColor 30 210 210            # divination border - tier 2
@@ -269,13 +285,13 @@ Show # T2 - Great cards
 
 Show # T3 - Decent cards
     Class "Divination"
-    BaseType "Dialla's Subjugation" "Earth Drinker" "Humility" "Jack in the Box" "Left to Fate" "Merciless Armament" "No Traces" "Scholar of the Seas" "Standoff" "The Body" "The Cursed King" "The Dark Mage" "The Fletcher" "The Gladiator" "The Inventor" "The Jester" "The Porcupine" "The Scavenger" "The Stormcaller" "The Warlord" "Time-Lost Relic" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite"
+    BaseType "Jack in the Box" "Lucky Connections" "Lucky Deck" "No Traces" "Rebirth" "Scholar of the Seas" "Standoff" "The Cursed King" "The Dark Mage" "The Fletcher" "The Forsaken" "The Inventor" "The Jester" "The Trial" "The Wrath" "The Wretched" "Valley of Steel Boxes" "Wolven King's Bite" "The Deceiver" "Blessing of God"
     SetFontSize 38
     PlayAlertSound 12 100
 
 Show # T4 - Garbage cards
     Class "Divination"
-    BaseType "Carrion Crow" "Cartographer's Delight" "Death" "Destined to Crumble" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Metalsmith's Gift" "Other Cheek" "Prosperity" "Rain of Chaos" "Struck by Lightning" "The Feast" "The Incantation" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Scholar" "The Sigil" "The Surgeon" "The Twins" "The Warden" "Thunderous Skies"
+    BaseType "A Mother's Parting Gift" "Anarchy's Price" "Audacity" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Shard of Fate" "Struck by Lightning" "The Avenger" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Sun" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
     SetFontSize 24
     SetBackgroundColor 0 0 0 127 # Dim background
 
@@ -468,13 +484,14 @@ Show # Bases - 83+ crafting weapons (phys)
 Show # Bases - 84+ crafting armor (life, es, resists)
     ItemLevel >= 84
     Rarity = Normal
-    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask"
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask" "Pinnacle Tower Shield" "Supreme Spiked Shield" "Elegant Round Shield" "Mosaic Kite Shield" "Archon Kite Shield" "Colossal Tower Shield" "Cardinal Round Shield" "Crusader Buckler"
     SetBorderColor 54 100 146 # Crafting bases
 
 # Add a crafting border to normal items of desired chance bases
 Show # Bases - Chance
+    Corrupted False
     Rarity = Normal
-    BaseType "Sorcerer Boots" "Sapphire Flask" "Occultist's Vestment" "Glorious Plate"
+    BaseType "Sapphire Flask" "Occultist's Vestment" "Glorious Plate" "Ebony Tower Shield" "Leather Belt" "Sorcerer Boots" "Full Wyrmscale"
     SetBorderColor 54 100 146 # Crafting bases
 
 # Section: Rares
@@ -494,7 +511,7 @@ Show # Bases - 83+ crafting weapons (phys), same teal border but bigger text (bl
 Show # Bases - 84+ crafting armor (life, es, resists), same teal border but bigger text (blue)
     ItemLevel >= 84
     Rarity > Normal
-    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask"
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask" "Pinnacle Tower Shield" "Supreme Spiked Shield" "Elegant Round Shield" "Mosaic Kite Shield" "Archon Kite Shield" "Colossal Tower Shield" "Cardinal Round Shield" "Crusader Buckler"
     SetFontSize 28
 
 Show # Good Rares - Chaos
