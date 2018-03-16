@@ -1,6 +1,9 @@
-# Sayya's Ty Edition item filter, v. 5.0 (2018-03-02)
+# Sayya's Ty Edition item filter, v. 5.0.3 (2018-03-15)
 #
 # Changelog:
+# 2018-03-15 v5.0.3 retiered div cards, added the new DisableDropSound effect to all hidden things
+# 2018-03-02 v5.0.2 added more prophecy uniques, updated prophecy-unique purpling effect to be more prominent, added a lootfilter sound for lower tier maps, added necromancy nets, shitty nets now hidden by default and no more drop sound for nets, added abyss jewel tiers (no more drop sound for shitty blue jewels), added section comments that are actually distinguishable
+# 2018-03-02 v5.0.1 added more prophecy uniques
 # 2018-03-02 v5.0 updated for POE 3.2.  Added Beastiary nets and orbs, updated chance bases, added slightly purpled background to prophecy unique bases, changed shield tiers and highlighting to reflect their potential in SST-era poe, added new tiered div cards based on Neversink's filter
 # 2017-12-22 v4.3 fixed bug surrounding shaped maps' drop sound, added sound to stacked deck
 # 2017-12-11 v4.2 fixed breach ring border bug, adjusted rare hiding rules from map lvl 71 to map lvl 68, merged chance base borders with craft base borders
@@ -38,7 +41,13 @@
 # Maximized volume on alert sounds, tweaked high-end currency alert (5/1/2015)
 # Refined flask and quiver handling (4/30/2015)
 
-# Section: Currency
+
+## ---------------------
+## ---
+## --- CURRENCY
+## ---
+## ---------------------
+
 # Add a font size to shitkid currency
 Show # Currency - Low
     BaseType "Orb of Transmutation" "Orb of Augmentation" "Orb of Alteration" "Chromatic Orb" "Jeweller's Orb" "Orb of Chance" "Glassblower's Bauble"
@@ -46,15 +55,7 @@ Show # Currency - Low
 
 # Add a currency-colored border to midtier currency
 Show # Currency - Mid
-    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Bestiary Orb" Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Exalted Shard" "Screaming Essence of" "Deafening Essence of" "Stacked Deck"
-    SetBorderColor 170 158 130 # Uncommon currency
-    SetFontSize 38
-    PlayAlertSound 3 100
-
-# Add a currency-colored border to bestiary nets
-Show # Currency - Mid
-    Class Currency
-    BaseType "Thaumaturgical Net" "Simple Steel Net" "Reinforced Steel Net" "Strong Steel Net" "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net" "Simple Rope Net" "Reinforced Rope Net" "Strong Rope Net"
+    BaseType "Fusing" "Regret" "Gemcutter's Prism" "Chisel" "Blessed" "Regal Orb" "Vaal Orb" "Chaos Orb" "Orb of Alchemy" "Scouring" "Remnant of Corruption" "Cartographer's Sextant" "Cartographer's Seal" "Ancient Orb" "Harbinger's Orb" "Bestiary Orb" "Engineer's Orb" "Orb of Binding" "Orb of Annulment" "Orb of Horizons" "Unshaping Orb" "Blessing of" "Exalted Shard" "Screaming Essence of" "Deafening Essence of" "Stacked Deck"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
     PlayAlertSound 3 100
@@ -68,15 +69,26 @@ Show # Currency - High
 
 # Add a currency-colored border to low currency
 Show # Currency - Shit you always wanna pick up but you don't wanna make a fuss about it (no sound)
-    BaseType "Splinter of" "Perandus Coin" "Silver Coin" "Harbinger's Shard" "Ancient Shard" "Engineer's Shard" "Binding Shard" "Annulment Shard" "Horizon Shard" "Essence of"
+    BaseType "Splinter of" "Perandus Coin" "Silver Coin" "Harbinger's Shard" "Ancient Shard" "Engineer's Shard" "Binding Shard" "Annulment Shard" "Horizon Shard" "Essence of" "Thaumaturgical Net" "Strong Steel Net" "Necromancy Net"
     SetBorderColor 170 158 130 # Uncommon currency
     SetFontSize 38
+
+Hide # Currency - Shit you never wanna pick up, feel free to add stuff like id scrolls here if desired (press alt to reveal at normal size)
+    BaseType "Simple Steel Net" "Reinforced Steel Net" "Simple Iron Net" "Reinforced Iron Net" "Strong Iron Net" "Simple Rope Net" "Reinforced Rope Net" "Strong Rope Net"
+    SetFontSize 38
+    DisableDropSound
 
 # Default handling of other currency
 Show # Currency - Low
     Class "Currency"
 
-# Section: Maps, Uniques, Quest Items, Labyrinth Items
+
+## ---------------------
+## ---
+## --- MAPS
+## ---
+## ---------------------
+
 # Adjust font size of: uniques, maps (includes sacrifice fragments & divine vessel), quest items, and lab stuff
 Show # Valuables - Divine Vessel
     BaseType "Divine Vessel"
@@ -98,16 +110,18 @@ Show #Maps I care about
     PlayAlertSound 1 300
     SetFontSize 42
 
-Show #Maps I sorta care about
-    Class "Map"
-    Rarity <= Rare
-    DropLevel > 71
-    SetFontSize 40
-
-Show # Maps/Fragments
+Show # Maps/Fragments ADDED MAP SOUNDS FOR OTHER MAPS -- configure sounds to play for all maps and map fragments below t10
     Class "Map"
     Rarity <= Rare
     SetFontSize 38
+    PlayAlertSound 9 100
+
+
+## ---------------------
+## ---
+## --- LAB, QUEST ITEMS, LEAGUESTONES
+## ---
+## ---------------------
 
 Show # Magic Leaguestons
     BaseType "Leaguestone"
@@ -136,19 +150,31 @@ Show # Labyrinth Treasure Items
     SetFontSize 38
     PlayAlertSound 3 100
 
+
+## ---------------------
+## ---
+## --- UNIQUES
+## ---
+## ---------------------
+
 Show # Valuables - Prophecy Uniques
-    BaseType "Coral Amulet" "Coral Ring" "Crude Bow" "Death Bow" "Fire Arrow Quiver" "Gavel" "Gilded Sallet" "Goathide Gloves" "Golden Buckler" "Iron Hat" "Iron Ring" "Iron Staff" "Jade Amulet" "Jade Hatchet" "Jagged Maul" "Long Bow" "Ornate Sword" "Painted Buckler" "Plank Kite Shield" "Plate Vest" "Reaver Sword" "Reinforced Greaves" "Royal Bow" "Royal Staff" "Scholar Boots" "Serrated Arrow Quiver" "Sledgehammer" "Spiraled Wand" "Studded Belt" "Velvet Gloves" "Velvet Slippers" "Vine Circlet" "War Buckler" "Wild Leather" "Woodsplitter"
+    BaseType "Coral Amulet" "Crude Bow" "Death Bow" "Fire Arrow Quiver" "Gilded Sallet" "Goathide Gloves"  "Iron Hat" "Iron Ring" "Iron Staff" "Jade Amulet" "Jade Hatchet" "Long Bow" "Ornate Sword" "Painted Buckler" "Plank Kite Shield" "Plate Vest" "Royal Bow" "Royal Staff" "Scholar Boots" "Serrated Arrow Quiver" "Sledgehammer" "Spiraled Wand" "Velvet Gloves" "Vine Circlet" "War Buckler" "Wild Leather" "Woodsplitter" "Sharktooth Arrow Quiver" "Gold Amulet" "Latticed Ringmail" "Moonstone Ring" "Cleaver" "Skinning Knife" "Rusted Sword" "Brass Maul" "Gnarled Branch" "Iron Mask" "Iron Circlet" "Clasped Boots" "Gavel" "Coral Ring" "Reaver Sword" "Reinforced Greaves" "Studded Belt" "Velvet Slippers" "Leather Hood" "Jagged Maul" "Golden Buckler" "Strapped Leather"
     Rarity = Unique
     SetFontSize 42
     PlayAlertSound 8 200
-    SetBackgroundColor 10 0 30 # prophecy background
+    SetBackgroundColor 20 0 55 # prophecy background
 
 Show # Valuables - Uniques
     Rarity = Unique
     SetFontSize 42
     PlayAlertSound 8 200
 
-# Section: Flasks
+
+## ---------------------
+## ---
+## --- FLASKS
+## ---
+## ---------------------
 
 # Add a border to flasks that are near the current level or have 10%+ quality
 Show # Flasks - Utility
@@ -176,6 +202,7 @@ Hide # Flasks - Hybrid - Other
     Class "Hybrid Flask"
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
+    DisableDropSound
 
 Show # Flasks - Mana - ilvl < 15
     ItemLevel < 15
@@ -259,8 +286,12 @@ Show # Flasks - Life - Divine+ - (over 70)
     Class "Life Flask"
     SetFontSize 25
 
-# Section: Special Items
-# Valuables - Divination Cards
+## ---------------------
+## ---
+## --- DIV CARDS (DIVINATION CARDS)
+## ---
+## ---------------------
+
 Show # card exceptions (belongs in t4)
     Class "Divination"
     BaseType "The Wolf's Shadow"
@@ -269,7 +300,7 @@ Show # card exceptions (belongs in t4)
 
 Show # T1 - Top tier cards
     Class "Divination"
-    BaseType "Abandoned Wealth" "Heterochromia" "House of Mirrors" "Hunter's Reward" "Last Hope" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Brittle Emperor" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Fiend" "The Formless Sea" "The Hunger" "The Immortal" "The King's Heart" "The Last One Standing" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Standoff" "The Thaumaturgist" "The Valkyrie" "The Vast" "The Wind" "The Wolf" "The Wolven King's Bite" "Wealth and Power" "The Iron Bard" "The World Eater"
+    BaseType "Abandoned Wealth" "House of Mirrors" "Hunter's Reward" "Last Hope" "Mawr Blaidd" "Polymath" "Pride Before the Fall" "Spark and the Flame" "The Artist" "The Brittle Emperor" "The Celestial Justicar" "The Doctor" "The Dragon's Heart" "The Enlightened" "The Fiend" "The Formless Sea" "The Hunger" "The Immortal" "The Iron Bard" "The King's Heart" "The Last One Standing" "The Offering" "The Queen" "The Saint's Treasure" "The Sephirot" "The Spark and the Flame" "The Valkyrie" "The Wind" "The Wolven King's Bite" "The World Eater" "Wealth and Power"
     SetFontSize 42
     SetBackgroundColor 0 0 0 255         # Contrast background
     SetBorderColor 175 96 37             # Rare currency border
@@ -277,7 +308,7 @@ Show # T1 - Top tier cards
 
 Show # T2 - Great cards
     Class "Divination"
-    BaseType "Bowyer's Dream" "Chaotic Disposition" "Emperor of Purity" "Humility" "Left to Fate" "Lingering Remnants" "Saint's Treasure" "The Cartographer" "The Chains that Bind" "The Dapper Prodigy" "The Enlightened" "The Ethereal" "The Hoarder" "The Offering" "The Polymath" "The Porcupine" "The Risk" "The Soul" "The Throne" "The Valley of Steel Boxes" "The Void" "The Warlord" "Time-Lost Relic" "The Breach" "The Dreamer" "The Obscured"
+    BaseType "Bowyer's Dream" "Chaotic Disposition" "Emperor of Purity" "Heterochromia" "Left to Fate" "Saint's Treasure" "The Breach" "The Cartographer" "The Dapper Prodigy" "The Dreamer" "The Ethereal" "The Hoarder" "The Obscured" "The Polymath" "The Risk" "The Thaumaturgist" "The Throne" "The Valley of Steel Boxes" "The Vast" "The Void" "The Wolf"
     SetFontSize 40
     SetBackgroundColor 0 0 0 255         # Contrast background
     SetBorderColor 30 210 210            # divination border - tier 2
@@ -285,13 +316,13 @@ Show # T2 - Great cards
 
 Show # T3 - Decent cards
     Class "Divination"
-    BaseType "Jack in the Box" "Lucky Connections" "Lucky Deck" "No Traces" "Rebirth" "Scholar of the Seas" "Standoff" "The Cursed King" "The Dark Mage" "The Fletcher" "The Forsaken" "The Inventor" "The Jester" "The Trial" "The Wrath" "The Wretched" "Valley of Steel Boxes" "Wolven King's Bite" "The Deceiver" "Blessing of God"
+    BaseType "Blessing of God" "Earth Drinker" "Humility" "Jack in the Box" "Lingering Remnants" "Lucky Connections" "No Traces" "Rebirth" "Scholar of the Seas" "Standoff" "The Chains that Bind" "The Dark Mage" "The Dragon" "The Fletcher" "The Forsaken" "The Inventor" "The Jester" "The Lion" "The Porcupine" "The Soul" "The Standoff" "The Surveyor" "The Trial" "The Warlord" "The Wrath" "The Wretched" "Time-Lost Relic" "Valley of Steel Boxes" "Vinia's Token" "Wolven King's Bite"
     SetFontSize 38
     PlayAlertSound 12 100
 
 Show # T4 - Garbage cards
     Class "Divination"
-    BaseType "A Mother's Parting Gift" "Anarchy's Price" "Audacity" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Shard of Fate" "Struck by Lightning" "The Avenger" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Sun" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
+    BaseType "A Mother's Parting Gift" "Anarchy's Price" "Birth of the Three" "Carrion Crow" "Cartographer's Delight" "Death" "Dying Anguish" "Hermit" "King's Blade" "Lantador's Lost Love" "Light and Truth" "Metalsmith's Gift" "Might is Right" "Other Cheek" "Prosperity" "Rain of Chaos" "Rain Tempter" "Shard of Fate" "Struck by Lightning" "The Avenger" "The Blazing Fire" "The Coming Storm" "The Conduit" "The Eye of the Dragon" "The Feast" "The Incantation" "The Inoculated" "The Lich" "The Lover" "The Lunaris Priestess" "The Oath" "The Rabid Rhoa" "The Ruthless Ceinture" "The Scarred Meadow" "The Scholar" "The Sigil" "The Siren" "The Sun" "The Surgeon" "The Tower" "The Twins" "The Warden" "The Wolverine" "Thunderous Skies" "Volatile Power"
     SetFontSize 24
     SetBackgroundColor 0 0 0 127 # Dim background
 
@@ -300,14 +331,19 @@ Show # Other / unknown cards (plays sound just to be safe)
     SetFontSize 38
     PlayAlertSound 12 100
 
-# Valuables - Fishing Rods
-Show # Valuables - Fishing Rods
+
+## ---------------------
+## ---
+## --- FISHING RODS, JEWELS, TALISMANS
+## ---
+## ---------------------
+
+Show # Fishing Rods
     Class "Fishing Rod"
     SetBorderColor 175 96 37 # Rare currency border
     SetFontSize 42
     PlayAlertSound 5 300
 
-# Valuables - Jewels
 Show # Cobalt Jewels
     BaseType "Cobalt Jewel"
     SetFontSize 38
@@ -332,37 +368,62 @@ Show # Prismatic Jewels
     SetBorderColor 210 210 210
     PlayAlertSound 7 100
 
-Show # Abyss Jewels
+Show # Abyss Jewels - high ilvl, rare
+    ItemLevel >= 84
     Class "Abyss Jewel"
-    SetFontSize 38
+    Rarity = Rare
+    SetFontSize 42
     SetBorderColor 160 160 160
     SetBackgroundColor 0 0 0 255
+    PlayAlertSound 7 300
+
+Show # Abyss Jewels - high ilvl, magic
+    ItemLevel >= 84
+    Class "Abyss Jewel"
+    Rarity <= Magic
+    SetFontSize 42
+    SetBorderColor 160 160 160
+    SetBackgroundColor 0 0 0 255
+    PlayAlertSound 7 300
+
+Show # Abyss Jewels - low ilvl, rare
+    Class "Abyss Jewel"
+    Rarity = Rare
+    SetFontSize 38
     PlayAlertSound 7 100
+
+Show # Abyss Jewels - low ilvl, magic
+    Class "Abyss Jewel"
+    Rarity <= Magic
+    SetFontSize 38
 
 Show # Talismans
     Class "Amulet"
     BaseType "Talisman"
     SetFontSize 38
 
-# Section: Links and Sockets
 
-# Add a grey border and sound to 6s/5l/6l items (AlertSound2)
-Show # Valuables - 5/6L
+## ---------------------
+## ---
+## --- SOCKETS, LINKS, CHROME/CHROMATIC RECIPE, CHISEL RECIPE
+## ---
+## ---------------------
+
+Show # 5/6L
     LinkedSockets >= 5
     SetBorderColor 127 127 127 # 6S/5L/6L border
     SetBackgroundColor 0 0 0 255 # Contrast background
     SetFontSize 42
     PlayAlertSound 2 300
 
-Show # Valuables - 6S
+Show # 6S
     Sockets = 6
     SetBorderColor 127 127 127 # 6S/5L/6L border
     SetBackgroundColor 0 0 0 255 # Contrast background
     SetFontSize 42
     PlayAlertSound 2 300
 
-# Slightly lighten white/magic RGB items a la Antnee
-Show # Valuables - RGB Items - white small
+Show # RGB Items (chrome recipe) - white small
     Rarity = Normal
     SocketGroup "RGB"
     Width <= 2
@@ -370,7 +431,7 @@ Show # Valuables - RGB Items - white small
     SetTextColor 255 255 255 # RGB whites
     SetBackgroundColor 0 0 0 255 # Contrast background
 
-Show # Valuables - RGB Items - white thin
+Show # RGB Items (chrome recipe) - white thin
     Rarity = Normal
     SocketGroup "RGB"
     Width <= 1
@@ -378,12 +439,12 @@ Show # Valuables - RGB Items - white thin
     SetTextColor 255 255 255 # RGB whites
     SetBackgroundColor 0 0 0 255 # Contrast background
 
-Show # Valuables - RGB Items - white thicc
+Show # RGB Items (chrome recipe) - white thicc
     Rarity = Normal
     SocketGroup "RGB"
     SetFontSize 24
 
-Show # Valuables - RGB Items - blue small
+Show # RGB Items (chrome recipe) - blue small
     Rarity = Magic
     SocketGroup "RGB"
     Width <= 2
@@ -391,7 +452,7 @@ Show # Valuables - RGB Items - blue small
     SetTextColor 125 175 255 # RGB blues
     SetBackgroundColor 0 0 0 255 # Contrast background
 
-Show # Valuables - RGB Items - blue thin
+Show # RGB Items (chrome recipe) - blue thin
     Rarity = Magic
     SocketGroup "RGB"
     Width <= 1
@@ -399,12 +460,26 @@ Show # Valuables - RGB Items - blue thin
     SetTextColor 125 175 255 # RGB blues
     SetBackgroundColor 0 0 0 255 # Contrast background
 
-Show # Valuables - RGB Items - blue thicc
+Show # RGB Items (chrome recipe) - blue thicc
     Rarity = Magic
     SocketGroup "RGB"
     SetFontSize 24
 
-# Section: Gems
+Show # Chisel Hammers
+    Rarity = Normal
+    BaseType "Stone Hammer" "Rock Breaker" "Gavel"
+
+Show # Chisel Hammers
+    Quality >= 16
+    Rarity = Magic
+    BaseType "Stone Hammer" "Rock Breaker" "Gavel"
+
+
+## ---------------------
+## ---
+## --- GEMS
+## ---
+## ---------------------
 
 # Slightly enlarge and add a teal border to quality gems as well as Empower etc.; shrink all other gems slightly; slightly dim active gems.
 Show # Gems - Quality
@@ -441,8 +516,13 @@ Show # Gems - Active
     Class "Active"
     SetFontSize 25
 
-# Section: Base Items
-# shaper / elder (REFINE ME AFTER LEAGUE START)
+
+## ---------------------
+## ---
+## --- SHAPER/ELDER (REFINE ME AFTER LEAGUE START)
+## ---
+## ---------------------
+
 Show # Elder Items
     ElderItem True
     SetFontSize 38
@@ -457,7 +537,13 @@ Show # Shaper Items
     SetBackgroundColor 0 0 0 255 # Contrast background
     PlayAlertSound 14 100
 
-# Add a teal border to ilvl 83+ items of desired bases
+
+## ---------------------
+## ---
+## --- CRAFTING BASES, CHANCE BASES
+## ---
+## ---------------------
+
 Show # Bases - 83+ jewelry
     ItemLevel >= 83
     Rarity = Normal
@@ -484,7 +570,7 @@ Show # Bases - 83+ crafting weapons (phys)
 Show # Bases - 84+ crafting armor (life, es, resists)
     ItemLevel >= 84
     Rarity = Normal
-    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask" "Pinnacle Tower Shield" "Supreme Spiked Shield" "Elegant Round Shield" "Mosaic Kite Shield" "Archon Kite Shield" "Colossal Tower Shield" "Cardinal Round Shield" "Crusader Buckler"
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask" "Ezomyte Tower Shield" "Supreme Spiked Shield" "Mosaic Kite Shield" "Archon Kite Shield" "Colossal Tower Shield" "Cardinal Round Shield" "Crusader Buckler" "Imperial Buckler" "Lacquered Buckler"
     SetBorderColor 54 100 146 # Crafting bases
 
 # Add a crafting border to normal items of desired chance bases
@@ -494,7 +580,16 @@ Show # Bases - Chance
     BaseType "Sapphire Flask" "Occultist's Vestment" "Glorious Plate" "Ebony Tower Shield" "Leather Belt" "Sorcerer Boots" "Full Wyrmscale"
     SetBorderColor 54 100 146 # Crafting bases
 
-# Section: Rares
+Show # Valuables - Sacrificial Garb
+    BaseType "Sacrificial Garb"
+
+
+## ---------------------
+## ---
+## --- RARES & RARE TIER LIST, CHAOS/REGAL RECIPE
+## ---
+## ---------------------
+
 # Show only good rares!
 Show # Good Rares - Regal
     Rarity = Rare
@@ -511,7 +606,7 @@ Show # Bases - 83+ crafting weapons (phys), same teal border but bigger text (bl
 Show # Bases - 84+ crafting armor (life, es, resists), same teal border but bigger text (blue)
     ItemLevel >= 84
     Rarity > Normal
-    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask" "Pinnacle Tower Shield" "Supreme Spiked Shield" "Elegant Round Shield" "Mosaic Kite Shield" "Archon Kite Shield" "Colossal Tower Shield" "Cardinal Round Shield" "Crusader Buckler"
+    BaseType "Carnal Armour" "Assassin's Garb" "Astral Plate" "Occultist's Vestment" "Saintly Chainmail" "Triumphant Lamellar" "Vaal Regalia" "Glorious Plate" "Zodiac Leather" "Slink Boots" "Titan Greaves" "Sorcerer Boots" "Slink Gloves" "Sorcerer Gloves" "Titan Gauntlets" "Lion Pelt" "Eternal Burgonet" "Hubris Circlet" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Deicide Mask" "Supreme Spiked Shield" "Elegant Round Shield" "Mosaic Kite Shield" "Archon Kite Shield" "Colossal Tower Shield" "Ezomyte Tower Shield" "Cardinal Round Shield" "Crusader Buckler" "Imperial Buckler" "Lacquered Buckler"
     SetFontSize 28
 
 Show # Good Rares - Chaos
@@ -523,7 +618,7 @@ Show # Good Rares - Chaos
 Show # Good Rares - Rest
     Rarity = Rare
     ItemLevel >= 60
-    BaseType "Sai" "Dragoon Sword" "Gemini Claw" "Behemoth Mace" "Tiger Hook" "Profane Wand" "Runic Hatchet" "Sambar Sceptre" "Platinum Kris" "Golden Kris" "Ambusher" "Gavel" "Opal Sceptre" "Void Sceptre" "Jewelled Foil" "Vaal Rapier" "Prophecy Wand" "Imbued Wand" "Opal Wand" "Pinnacle Tower Shield" "Colossal Tower Shield" "Ezomyte Tower Shield" "Imperial Buckler" "Crusader Buckler" "Vaal Buckler" "Lacquered Buckler" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Vaal Spirit Shield" "Fossilised Spirit Shield" "Elegant Round Shield" "Cardinal Round Shield" "Spiny Round Shield" "Archon Kite Shield" "Mosaic Kite Shield" "Champion Kite Shield" "Supreme Spiked Shield" "Mirrored Spiked Shield" "Ezomyte Spiked Shield"
+    BaseType "Sai" "Dragoon Sword" "Gemini Claw" "Behemoth Mace" "Tiger Hook" "Profane Wand" "Runic Hatchet" "Sambar Sceptre" "Platinum Kris" "Golden Kris" "Ambusher" "Gavel" "Opal Sceptre" "Void Sceptre" "Jewelled Foil" "Vaal Rapier" "Prophecy Wand" "Imbued Wand" "Opal Wand" "Colossal Tower Shield" "Ezomyte Tower Shield" "Imperial Buckler" "Crusader Buckler" "Vaal Buckler" "Lacquered Buckler" "Titanium Spirit Shield" "Harmonic Spirit Shield" "Vaal Spirit Shield" "Fossilised Spirit Shield" "Cardinal Round Shield" "Archon Kite Shield" "Mosaic Kite Shield" "Supreme Spiked Shield"
 
 # Add a light blue border to regal recipe rares
 Show # Rares - 75+ - Regal Recipe Jewelry
@@ -596,35 +691,26 @@ Show # Rares - Rest
     SetTextColor 200 200 119 180 # Dim yellow
     SetBackgroundColor 0 0 0 127 # Dim background
 
-# Section: Other Items (accessories, chisel hammers, Maraketh weapons, Sacrificial Garb)
 
-# Always show accessories (reduced size), hammers (white or magic 16%), and sacrificial garbs
-Show # Chisel Hammers
-    Rarity = Normal
-    BaseType "Stone Hammer" "Rock Breaker" "Gavel"
+## ---------------------
+## ---
+## --- LEVELING STUFF & HIDE THE GARBAGE (ADD TO ME)
+## ---
+## ---------------------
 
-Show # Chisel Hammers
-    Quality >= 16
-    Rarity = Magic
-    BaseType "Stone Hammer" "Rock Breaker" "Gavel"
-
-Show # Valuables - Sacrificial Garb
-    BaseType "Sacrificial Garb"
-
-#Highlight 4L items below level 50
+#Highlight 4L items below level 55
 Show # Valuables - 4L
     LinkedSockets = 4
-    ItemLevel < 50
+    ItemLevel < 55
     SetBackgroundColor 0 0 0 255 # Contrast background
 
-Show # leveling jewelry
+Show # leveling jewelry below level 55
     Rarity = Magic
-    ItemLevel < 50
+    ItemLevel < 55
     SetFontSize 28
     Class "Amulets" "Rings" "Belts"
 
-# Section: Cleanup (hiding)
-# Hide white and magic items with a substantial gap between drop and item level (REMOVE FROM HERE UNTIL NEXT COMMENT if you want nothing hidden)
+# Hide white and magic items with a substantial gap between drop and item level
 Hide # Trash - Low Base
     ItemLevel >= 20
     DropLevel <= 10
@@ -632,6 +718,7 @@ Hide # Trash - Low Base
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 30
@@ -640,6 +727,7 @@ Hide # Trash - Low Base
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 38
@@ -648,6 +736,7 @@ Hide # Trash - Low Base
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 46
@@ -656,6 +745,7 @@ Hide # Trash - Low Base
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 51
@@ -664,6 +754,7 @@ Hide # Trash - Low Base
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Stop giving a shit about whites
     ItemLevel >= 55
@@ -671,6 +762,7 @@ Hide # Trash - Stop giving a shit about whites
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 20
@@ -679,6 +771,7 @@ Hide # Trash - Low Base
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 30
@@ -687,6 +780,7 @@ Hide # Trash - Low Base
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 38
@@ -695,6 +789,7 @@ Hide # Trash - Low Base
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 46
@@ -703,6 +798,7 @@ Hide # Trash - Low Base
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Low Base
     ItemLevel >= 51
@@ -711,6 +807,7 @@ Hide # Trash - Low Base
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
 Hide # Trash - Stop giving a shit about blues
     ItemLevel >= 55
@@ -718,19 +815,20 @@ Hide # Trash - Stop giving a shit about blues
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
+    DisableDropSound
 
-# Section: Cleanup (dimming and shrinking) after A1N
-
-# Dim normal and magic items above level 15 that aren't hidden but aren't special
+# Section: Cleanup (dimming and shrinking) after A3N
+# Dim normal items above level 24 that aren't hidden but aren't special
 Show # Trash - Dimmed
-    ItemLevel > 14
+    ItemLevel > 24
     Rarity = Normal
     SetTextColor 150 150 150 180 # Dim white
     SetBackgroundColor 0 0 0 127 # Dim background
     SetFontSize 25
 
+# Dim magic items above level 32 that aren't hidden but aren't special
 Show # Trash - Dimmed
-    ItemLevel > 14
+    ItemLevel > 32
     Rarity = Magic
     SetTextColor 95 95 179 180 # Dim blue
     SetBackgroundColor 0 0 0 127 # Dim background
@@ -738,10 +836,10 @@ Show # Trash - Dimmed
 
 # Section: Cleanup (shrinking only) in A1N
 
-Show # A1N drops - Normal
+Show # A1-A3 drops - Normal
     Rarity = Normal
     SetFontSize 25
 
-Show # A1N drops - Magic
+Show # A1-A3 drops - Magic
     Rarity = Magic
     SetFontSize 25
